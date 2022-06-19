@@ -1,0 +1,45 @@
+// Place template instantiations here.
+// Process = Template();
+// List one or more processes to be composed into a system.
+
+// system Process;
+
+broadcast chan LRI_Start, LRI_Ex, LRI_Stop;
+broadcast chan URI_Start, URI_Ex, URI_Stop;
+
+broadcast chan AEI_Start, AEI_Ex, AEI_Stop;
+broadcast chan AVI_Start, AVI_Ex, AVI_Stop;
+
+broadcast chan VRP_Start, VRP_Ex, VRP_Stop;
+broadcast chan PVARP_Start, PVARP_Ex, PVARP_Stop;
+
+broadcast chan VP, VPulse;
+broadcast chan AP, APulse;
+broadcast chan AS;
+
+ Random_Atrium_M = Random_Atrium(AP, APulse);
+ Random_Ventricle_M = Random_Ventricle(VP, VPulse);
+
+ PM_AVI_M = PM_AVI(VP, VPulse, APulse, AP , AVI_Start, AVI_Ex, AVI_Stop, VRP_Ex, URI_Ex, PVARP_Ex);
+ PM_AVI_Timer_M = PM_AVI_Timer(AVI_Start, AVI_Ex, AVI_Stop);
+
+ PM_AEI_M =  PM_AEI(VPulse, VP, APulse, AP ,AEI_Start , AEI_Ex, AEI_Stop, PVARP_Ex);
+ PM_AEI_Timer_M = PM_AEI_Timer(AEI_Start , AEI_Ex, AEI_Stop);
+
+ PM_LRI_M = PM_LRI(VPulse, VP,LRI_Start, LRI_Ex, LRI_Stop, VRP_Ex);
+ PM_LRI_Timer_M = PM_LRI_Timer(LRI_Start, LRI_Ex, LRI_Stop);
+
+ PM_URI_M = PM_URI(VPulse, VP ,URI_Start, URI_Ex);
+ PM_URI_Timer_M = PM_URI_Timer(URI_Start, URI_Ex);
+
+ PM_VRP_M =  PM_VRP(VPulse, VP, VRP_Start,VRP_Ex);
+ PM_VRP_Timer_M = PM_VRP_Timer(VRP_Start, VRP_Ex);
+
+ PM_PVARP_M = PM_PVARP(VPulse,APulse,AP,VP, PVARP_Start, PVARP_Ex);
+ PM_PVARP_Timer_M = PM_PVARP_Timer(PVARP_Start, PVARP_Ex);
+
+ Monitor_VRP_M = Monitor_VRP(VPulse, VP,  VRP_Ex);
+ Monitor_LRI_M = Monitor_LRI(VPulse, VP);
+
+system Random_Atrium_M, Random_Ventricle_M, PM_AVI_M, PM_AVI_Timer_M, PM_AEI_M, PM_AEI_Timer_M, PM_LRI_M, PM_LRI_Timer_M, PM_URI_M, 
+    PM_URI_Timer_M, PM_VRP_M, PM_VRP_Timer_M, PM_PVARP_M, PM_PVARP_Timer_M, Monitor_VRP_M,Monitor_LRI_M;

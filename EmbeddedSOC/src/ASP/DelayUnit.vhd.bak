@@ -1,0 +1,56 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity DelayUnit is 
+port (
+    clk : in std_logic;
+	 ValidData: in std_logic;
+	 reset : in std_logic;
+	 enable : in std_logic;
+	 Input : in std_logic_vector(15 downto 0);
+	 output: out std_logic_vector(15 downto 0)
+         );
+end DelayUnit;
+
+architecture arch of DelayUnit is
+
+TYPE data_array  is array (natural range <>) OF std_logic_vector(15 DOWNTO 0); 
+SIGNAL Data : data_array(0 to 8192);
+signal pointer: integer := 0;
+SIGNAL Output_q :	std_logic_vector(15 downto 0) := (OTHERS => '0'); 
+SIGNAL IO:  std_logic := '0';
+
+begin
+ process(clk,reset, enable)
+    begin
+	 if (reset = '1') then
+	 
+		Data <= (others => (others=>'0'));
+		Output_q <= (others => '0');
+		
+	elsif (rising_edge(clk)) then
+		if ((enable = '1') and (ValidData = '1') and (IO = '0')) then 
+			  Data(pointer) <= Input;
+			  pointer <= pointer + 1;
+			  
+			  if (pointer = 8192) then
+					pointer <= 0;
+					IO <= not IO;
+			 end if;
+				
+		elsif ((enable = '1') and (ValidData = '1') and (IO = '1')) then 
+				
+				 Output_q <= Data(pointer); 
+				 pointer <= pointer + 1;
+			  
+				if (pointer = 8192) then
+					pointer <= 0;
+					IO <= not IO;
+				end if;
+				
+		 end if;
+	end if;
+ end process;
+ output <= Output_q;
+end arch;

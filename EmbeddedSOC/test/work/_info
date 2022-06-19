@@ -1,0 +1,413 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/nikhil/intelFPGA_lite/20.1/modelsim_ase/bin
+Eaddition
+Z0 w1623287553
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 22
+Z4 d/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test
+Z5 8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/addition.vhd
+Z6 F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/addition.vhd
+l0
+L5 1
+V0LBbz;_KC2nH3lW<?hQU_1
+!s100 Dcei27YQjKO5D1LMY8TGj3
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1623568295
+!i10b 1
+Z9 !s108 1623568295.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/addition.vhd|
+Z11 !s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/addition.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Aarch
+R1
+R2
+R3
+DEx4 work 8 addition 0 22 0LBbz;_KC2nH3lW<?hQU_1
+!i122 22
+l21
+L17 20
+VWZgGgEVjZ@8LQcN`27;1m3
+!s100 HfDiLHG7IMgUoK=SKOe_k1
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Eallpassechoblock
+Z14 w1623568038
+R2
+R3
+!i122 21
+R4
+Z15 8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/AllPassEchoBlock.vhd
+Z16 F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/AllPassEchoBlock.vhd
+l0
+L25 1
+VI]LZ]^@I7>51HP^K_FgLU0
+!s100 `g^RP[B9JFT;ZCe;kD16l3
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/AllPassEchoBlock.vhd|
+Z18 !s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/AllPassEchoBlock.vhd|
+!i113 1
+R12
+R13
+Abdf_type
+R2
+R3
+DEx4 work 16 allpassechoblock 0 22 I]LZ]^@I7>51HP^K_FgLU0
+!i122 21
+l77
+L41 80
+V:IMJ]DMOgo777ZC^EI]af2
+!s100 U^37`8ZgRc<gTj4jMVodT2
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
+Etdmamin
+Z19 w1609459200
+Z20 DPx4 work 12 tdmamintypes 0 22 eoK6M:?N<ZA4b9;X81ibf0
+R3
+R2
+R1
+!i122 24
+R4
+8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd
+F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd
+l0
+L8 1
+V8eddCf=_3Y_9YJ<jB7?AL1
+!s100 6;L8z`bBSW^j[_>G_J?Gd2
+R7
+32
+R8
+!i10b 1
+R9
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd|
+!s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd|
+!i113 1
+R12
+R13
+Etdmaminfabric
+R19
+R20
+R3
+R2
+R1
+!i122 25
+R4
+8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd
+F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd
+l0
+L8 1
+V6WVB5`PaGmYdVZiRYmC031
+!s100 gPIDA1YCE:[;DEnj@Y>0i3
+R7
+32
+R8
+!i10b 1
+R9
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd|
+!s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd|
+!i113 1
+R12
+R13
+Etdmaminslots
+R19
+R3
+R2
+R1
+!i122 26
+R4
+Z21 8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSlots.vhd
+Z22 F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSlots.vhd
+l0
+L5 1
+V[]mR35C1d0_3JPVIB3RTi1
+!s100 bY70hkiSWIonW84Wkb5=Y2
+R7
+32
+R8
+!i10b 1
+R9
+Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSlots.vhd|
+Z24 !s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSlots.vhd|
+!i113 1
+R12
+R13
+Artl
+R3
+R2
+R1
+DEx4 work 12 tdmaminslots 0 22 []mR35C1d0_3JPVIB3RTi1
+!i122 26
+l19
+L15 16
+Voa7YdY9HD1`^2YNd]cUHU1
+!s100 8ZE?LJj4zV?JVY`ITHFDQ1
+R7
+32
+R8
+!i10b 1
+R9
+R23
+R24
+!i113 1
+R12
+R13
+Etdmaminstage
+R19
+R20
+R3
+R2
+R1
+!i122 27
+R4
+8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd
+F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd
+l0
+L8 1
+V]T2NUoHgP<NEiH29859CU0
+!s100 FF_3G3M34h_O0k2e3RoCo2
+R7
+32
+R8
+!i10b 1
+R9
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd|
+!s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd|
+!i113 1
+R12
+R13
+Etdmaminswitch
+R19
+R20
+R3
+R2
+R1
+!i122 28
+R4
+Z25 8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSwitch.vhd
+Z26 F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSwitch.vhd
+l0
+L8 1
+VEOU=a1<>hLA;o8J37DB]j3
+!s100 h[e;lEbjCXFWZ]MK6d]=d1
+R7
+32
+R8
+!i10b 1
+R9
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSwitch.vhd|
+!s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSwitch.vhd|
+!i113 1
+R12
+R13
+Artl
+R20
+R3
+R2
+R1
+DEx4 work 13 tdmaminswitch 0 22 EOU=a1<>hLA;o8J37DB]j3
+!i122 28
+l19
+L18 7
+VL1PMOLQ_YCejn3N4e6oAL3
+!s100 1a`QCVX^=HfRSbXEgSbnN1
+R7
+32
+R8
+!i10b 1
+R9
+R27
+Z28 !s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSwitch.vhd|
+!i113 1
+R12
+R13
+Ptdmamintypes
+R3
+R2
+R1
+!i122 23
+R19
+R4
+Z29 8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinTypes.vhd
+Z30 F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinTypes.vhd
+l0
+L5 1
+VeoK6M:?N<ZA4b9;X81ibf0
+!s100 RO]^LXRIn]Gj8NO>kodKH0
+R7
+32
+b1
+R8
+!i10b 1
+R9
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinTypes.vhd|
+Z32 !s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinTypes.vhd|
+!i113 1
+R12
+R13
+Bbody
+R20
+R3
+R2
+R1
+!i122 23
+l0
+L23 1
+VSFg75@2UoSLC]fTaNWV3f3
+!s100 0>WOSehlFYi]icGfEjD0:1
+R7
+32
+R8
+!i10b 1
+R9
+R31
+R32
+!i113 1
+R12
+R13
+Etestadc
+R19
+R20
+R3
+R2
+R1
+!i122 19
+R4
+Z33 8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestAdc.vhd
+Z34 F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestAdc.vhd
+l0
+L8 1
+Va6zE_Lj_fmk3LWJYFLKKR0
+!s100 ?eXjeo0mQ[S9Q=[R?0Mj40
+R7
+32
+R8
+!i10b 1
+R9
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestAdc.vhd|
+Z36 !s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestAdc.vhd|
+!i113 1
+R12
+R13
+Asim
+R20
+R3
+R2
+R1
+DEx4 work 7 testadc 0 22 a6zE_Lj_fmk3LWJYFLKKR0
+!i122 19
+l20
+L19 34
+V;1iYTW@9FhW7TU>O7jE2T3
+!s100 S0QHbMXWGU7?kT6c>`0?O0
+R7
+32
+R8
+!i10b 1
+R9
+R35
+R36
+!i113 1
+R12
+R13
+Etestdac
+R19
+R20
+R3
+R2
+R1
+!i122 20
+R4
+Z37 8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestDac.vhd
+Z38 F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestDac.vhd
+l0
+L8 1
+V[b[DY@Ed8[T`m5JW^Km?h1
+!s100 fnK0EYa=bac?^9KO>SD>b3
+R7
+32
+R8
+!i10b 1
+R9
+Z39 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestDac.vhd|
+Z40 !s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestDac.vhd|
+!i113 1
+R12
+R13
+Asim
+R20
+R3
+R2
+R1
+DEx4 work 7 testdac 0 22 [b[DY@Ed8[T`m5JW^Km?h1
+!i122 20
+l21
+L16 21
+VIHM7:<[F1KF4_PcfbjbdC1
+!s100 GzoUA7l9RB;K741TfQN`j3
+R7
+32
+R8
+!i10b 1
+R9
+R39
+R40
+!i113 1
+R12
+R13
+Etesttoplevel
+R19
+R20
+R3
+R2
+R1
+!i122 18
+R4
+8/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd
+F/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd
+l0
+L8 1
+V`E1aT7^W2lNJgmmEzCYQQ1
+!s100 iXQlXW8=7hEd42XCAOFI]3
+R7
+32
+R8
+!i10b 1
+R9
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd|
+!s107 /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd|
+!i113 1
+R12
+R13

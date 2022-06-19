@@ -1,0 +1,41 @@
+# Loading project testingIRP
+# Compile of TestTopLevel.vhd failed with 3 errors.
+# Compile of TestAdc.vhd failed with 3 errors.
+# Compile of TestDac.vhd failed with 3 errors.
+# Compile of AllPassEchoBlock.vhd was successful.
+# Compile of addition.vhd was successful.
+# 5 compiles, 3 failed with 9 errors.
+# Compile of TestTopLevel.vhd failed with 3 errors.
+# Compile of TestAdc.vhd failed with 3 errors.
+# Compile of TestDac.vhd failed with 3 errors.
+# Compile of AllPassEchoBlock.vhd was successful.
+# Compile of addition.vhd was successful.
+# Compile of TdmaMinTypes.vhd was successful.
+# 6 compiles, 3 failed with 9 errors.
+# Compile of TestTopLevel.vhd failed with 9 errors.
+# Compile of TestAdc.vhd was successful.
+# Compile of TestDac.vhd was successful.
+# Compile of AllPassEchoBlock.vhd was successful.
+# Compile of addition.vhd was successful.
+# Compile of TdmaMinTypes.vhd was successful.
+# 6 compiles, 1 failed with 9 errors.
+# Compile of TestTopLevel.vhd failed with 3 errors.
+# Compile of TestAdc.vhd was successful.
+# Compile of TestDac.vhd was successful.
+# Compile of AllPassEchoBlock.vhd was successful.
+# Compile of addition.vhd was successful.
+# Compile of TdmaMinTypes.vhd was successful.
+# 6 compiles, 1 failed with 3 errors.
+# Compile of TestTopLevel.vhd failed with 3 errors.
+# Compile of TestAdc.vhd was successful.
+# Compile of TestDac.vhd was successful.
+# Compile of AllPassEchoBlock.vhd was successful.
+# Compile of addition.vhd was successful.
+# Compile of TdmaMinTypes.vhd was successful.
+# Compile of TdmaMin.vhd failed with 9 errors.
+# Compile of TdmaMinFabric.vhd failed with 3 errors.
+# Compile of TdmaMinInterface.vhd failed with 1 errors.
+# Compile of TdmaMinSlots.vhd was successful.
+# Compile of TdmaMinStage.vhd failed with 3 errors.
+# Compile of TdmaMinSwitch.vhd was successful.
+# 12 compiles, 5 failed with 19 errors.

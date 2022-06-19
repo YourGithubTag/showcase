@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity gainSetter is 
+port (
+		clk : in std_logic;
+		gain_in 	  : in std_logic_vector(7 downto 0);
+
+		Feedback_1 : out std_logic_vector(15 downto 0);
+		Feedback_2 : out std_logic_vector(15 downto 0);
+
+		Feedforward_1 : out std_logic_vector(15 downto 0);
+		Feedforward_2 : out std_logic_vector(15 downto 0)
+);
+
+end gainSetter;
+
+Architecture gain_behaviour of gainSetter is
+
+signal input : signed(7 downto 0);
+
+signal Feedback_1_t : signed(15 downto 0);
+signal Feedback_2_t : signed(15 downto 0);
+
+signal Feedforward_1_t : signed(15 downto 0);
+signal Feedforward_2_t : signed(15 downto 0);
+
+begin
+
+input <= signed(gain_in);
+
+process(clk)
+begin
+
+	if (rising_edge(clk)) then 
+
+		Feedback_1_t <= input * x"02";
+		Feedforward_1_t <= input * x"01";
+
+		Feedback_2_t <= input * x"02";
+		Feedforward_2_t <= input * x"04";
+	end if;
+	
+end process;
+
+	Feedback_1 <= std_logic_vector(Feedback_1_t);
+	Feedback_2 <= std_logic_vector(Feedback_2_t);
+
+	Feedforward_1 <= std_logic_vector(Feedforward_1_t);
+	Feedforward_2 <= std_logic_vector(Feedforward_2_t);
+
+end gain_behaviour;
+

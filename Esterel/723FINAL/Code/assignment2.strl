@@ -1,0 +1,296 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Top Level Module that contains all submodules
+module CruiseController:
+
+% Interface Declarations
+input On;
+input Off;
+input Resume;
+input Set;
+input QuickDecel;
+input QuickAccel;
+input Accel := 0.0f : float;
+input Brake := 0.0f : float;
+input Speed := 0.0f : float;
+
+output CruiseSpeed : float;
+output ThrottleCmd : float;
+output CruiseState : integer;
+
+signal isGoingOn, SpeedValid, AccelPressed, BrakePressed
+in
+
+	run CruiseControlFSM
+	||
+	run PedalDetector
+	||
+	run ValidSpeedChecker
+	||
+	run CruiseSpeedManager
+	||
+	run ThrottleController
+
+end signal
+end module
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Chooses current state of the Cruise Control System based on system inputs and current state
+module CruiseControlFSM :
+
+% Interface Declarations
+input On, Off, Resume;
+
+input AccelPressed, BrakePressed;
+input SpeedValid;
+
+output CruiseState : integer;
+
+output isGoingOn;
+
+% Integer represents the current state of the Cruise Control System
+% 0 -> Off
+% 1 -> On
+% 2 -> Disable
+% 3 -> Stdby
+var ccState := 0 : integer
+in
+
+% Outer Loop resets to Off state whenever Off is pressed
+loop
+abort
+
+% Inner Loop moves system to STBDY whenever brake is pressed
+loop
+abort
+
+loop
+	% 0 -> Cruise Control Off
+	if ccState = 0 then
+		% Enter On state when On button pressed
+		present On then
+			ccState := 1;
+			emit isGoingOn;
+		end present;
+		
+		emit CruiseState(ccState);
+
+	% 1 -> Cruise Control On
+	elsif ccState = 1 then
+		% Check for Accel press or Invalid Speed to enter Disable
+		present AccelPressed or not SpeedValid then
+			ccState := 2;
+		end present;
+		
+		% Check for Brake press to enter Stdby, check SECOND for higher priority
+		present BrakePressed then
+			ccState := 3;
+		end present;
+
+		emit CruiseState(ccState);
+
+	% 2 -> Cruise Control Disable
+	elsif ccState = 2 then
+		% Return to On if accelerator not pressed and speed within limit
+		present not AccelPressed and SpeedValid then
+			ccState := 1;
+		end present;
+		
+		% Check for Brake press to enter Stdby, check SECOND for higher priority
+		present BrakePressed then
+			ccState := 3;
+		end present;
+	
+		emit CruiseState(ccState);
+
+	% 3 -> Cruise Control Stdby
+	elsif ccState = 3 then
+		% Wait for Resume to change state
+		present Resume then
+			% Accelerating or invalid speed, go to Disable
+			present AccelPressed or not SpeedValid then
+				ccState := 2;
+			end present;
+
+			% Not accelerating and valid speed, return to On
+			present not AccelPressed and SpeedValid then
+				ccState := 1;
+			end present;
+		end present;
+	
+		emit CruiseState(ccState);
+
+	else
+		% If not within valid range reset to Off
+		ccState := 0;
+	end if;
+each tick
+
+% Reset to STDBY state when Brake is pressed
+when BrakePressed;
+ccState := 3;
+end loop
+
+% Reset of Off state when Off is pressed
+when Off;
+ccState := 0;
+end loop
+
+end var
+end module
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Controlles the ThrottleCmd output depending on CC state and system inputs
+module ThrottleController :
+
+% Interface Declarations
+input Accel : float;
+input Speed : float;
+input CruiseSpeed : float;
+
+input isGoingOn;
+input CruiseState : integer;
+
+output ThrottleCmd : float;
+
+function regulateThrottle(boolean, float, float) : float;
+
+var
+resetInt : boolean
+in
+
+loop
+	% When CC is On, Throttle is controlled by external algorithm
+	if ?CruiseState = 1 then
+		present isGoingOn then
+			resetInt := true;
+		end present;
+		emit ThrottleCmd(regulateThrottle(resetInt, ?CruiseSpeed, ?Speed));
+	else
+		% When CC is not On, Throttle is directly driven by Accelerator
+		emit ThrottleCmd(?Accel);
+	end if;
+each tick
+
+end var
+
+end module
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Handles changing CruiseSpeed using Set, QuickAccel, and QuickDecel
+module CruiseSpeedManager :
+
+% Interface Declarations
+input QuickAccel, QuickDecel, Set;
+input Speed : float;
+
+input isGoingOn;
+input CruiseState : integer;
+
+output CruiseSpeed : float;
+
+
+% External Host Language Declarations
+procedure DecrementCruiseSpeed(float)();
+procedure IncrementCruiseSpeed(float)();
+procedure SetCruiseSpeedWithinBounds(float)();
+
+loop
+var newCruiseSpeed : float
+in
+	% If CC is turning On from Off then set the CruiseSpeed
+	present isGoingOn then
+		newCruiseSpeed := ?Speed;
+		call SetCruiseSpeedWithinBounds(newCruiseSpeed)();
+		emit CruiseSpeed(newCruiseSpeed);
+	end present;
+	
+	% Change speed if in relevant state
+	if ?CruiseState <> 0 then
+	
+		% Set CruiseSpeed
+		present Set then
+			newCruiseSpeed := pre(?Speed);
+			call SetCruiseSpeedWithinBounds(newCruiseSpeed)();
+			emit CruiseSpeed(newCruiseSpeed);
+		end present;
+		
+		% Increment CruiseSpeed
+		present QuickAccel and not QuickDecel and not Set then
+			newCruiseSpeed := pre(?CruiseSpeed);
+			call IncrementCruiseSpeed(newCruiseSpeed)();
+			emit CruiseSpeed(newCruiseSpeed);
+		end present;
+	
+		% Decrement CruiseSpeed
+		present QuickDecel and not QuickAccel and not Set then
+			newCruiseSpeed := pre(?CruiseSpeed);
+			call DecrementCruiseSpeed(newCruiseSpeed)();
+			emit CruiseSpeed(newCruiseSpeed);
+		end present;
+		
+	end if;
+
+end var
+each tick
+
+end module
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Detects whether current speed is within range of SpeedMin and SpeedMax
+module ValidSpeedChecker :
+
+% Interface Declarations
+input Speed : float;
+
+output SpeedValid;
+
+% External Host Language Declarations
+function CheckSpeedValid(float) : boolean;
+
+% Wait for Speed value to update
+await Speed;
+
+loop
+		if CheckSpeedValid(?Speed) = true then
+			emit SpeedValid;
+		end if;
+each tick
+
+end module
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Detects whether Accel and Brake values are above PedalsMin
+module PedalDetector :
+
+% Interface Declarations
+input Accel : float;
+input Brake : float;
+
+output AccelPressed;
+output BrakePressed;
+
+function isPressed(float) : boolean;
+
+loop
+	% Check if Accelerator is being pressed far enough
+	if isPressed(?Accel) = true then
+		emit AccelPressed;
+	end if;
+	
+	% Check if Brake is pressed far enough
+	if isPressed(?Brake) = true then
+		emit BrakePressed;
+	end if;
+
+	pause;
+end loop
+
+end module

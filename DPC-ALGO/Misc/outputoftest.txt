@@ -1,0 +1,253 @@
+15 NODES:
+dpcpp -g -std=c++17 -o Seidel-Parallel Seidel/NaiveParallelSeidel.cpp
+dpcpp -g -std=c++17 -O0 -o Seidel-Sequential Seidel/SequentialSeidel.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Blocked Floyd-Warshall/BlockParallelFloydWarshall.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Naive Floyd-Warshall/NaiveParallelFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o FloydWarshall-Sequential Floyd-Warshall/SequentialFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o Djik_Sequential RepeatedDjikstra/DjikstraBasic.cpp
+dpcpp -g -std=c++17 -o Djik_Parallel RepeatedDjikstra/DjikstraBasicAndParallel.cpp
+
+ZMatrix Calculating 
+ZMatrix calculated 
+Calculating BMatrix 
+Calculated BMatrix 
+Recurring 
+ZMatrix Calculating 
+ZMatrix calculated 
+Calculating BMatrix 
+Calculated BMatrix 
+Creating DMatrix BASECASE 
+
+ Sequential Seidel took 0 milliseconds to run.
+
+ Naive Parllel Floyd Warshall took 215 milliseconds to run.
+Initial GRAPH:
+FINAL GRAPH:
+
+ Sequential Floyd Warshall took 0 milliseconds to run.
+Original MAtrix 
+Final MAtrix 
+FInal MAtrix 
+
+ Blocked Parllel Floyd Warshall took 89 milliseconds to run.
+done
+The Sequential operation required: 0 milliseconds
+Parallel operation required: 195 milliseconds
+done
+$ 
+
+265 NODES:
+dpcpp -g -std=c++17 -o Seidel-Parallel Seidel/NaiveParallelSeidel.cpp
+dpcpp -g -std=c++17 -O0 -o Seidel-Sequential Seidel/SequentialSeidel.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Blocked Floyd-Warshall/BlockParallelFloydWarshall.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Naive Floyd-Warshall/NaiveParallelFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o FloydWarshall-Sequential Floyd-Warshall/SequentialFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o Djik_Sequential RepeatedDjikstra/DjikstraBasic.cpp
+dpcpp -g -std=c++17 -o Djik_Parallel RepeatedDjikstra/DjikstraBasicAndParallel.cpp
+
+ZMatrix Calculating 
+ZMatrix calculated 
+Calculating BMatrix 
+Calculated BMatrix 
+Creating DMatrix BASECASE 
+
+ Sequential Seidel took 205 milliseconds to run.
+
+Final return
+Final return
+
+Finished main
+Naive Parallel Seidel took 271 milliseconds to run.
+
+ Naive Parllel Floyd Warshall took 252 milliseconds to run.
+Initial GRAPH:
+FINAL GRAPH:
+
+ Sequential Floyd Warshall took 203 milliseconds to run.
+Original MAtrix 
+Final MAtrix 
+FInal MAtrix 
+
+ Blocked Parllel Floyd Warshall took 113 milliseconds to run.
+done
+The operation required: 732 milliseconds
+Parallel operation required: 156 milliseconds
+done
+$ 
+
+515 NODES:
+dpcpp -g -std=c++17 -o Seidel-Parallel Seidel/NaiveParallelSeidel.cpp
+dpcpp -g -std=c++17 -O0 -o Seidel-Sequential Seidel/SequentialSeidel.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Blocked Floyd-Warshall/BlockParallelFloydWarshall.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Naive Floyd-Warshall/NaiveParallelFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o FloydWarshall-Sequential Floyd-Warshall/SequentialFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o Djik_Sequential RepeatedDjikstra/DjikstraBasic.cpp
+dpcpp -g -std=c++17 -o Djik_Parallel RepeatedDjikstra/DjikstraBasicAndParallel.cpp
+
+Finished Degree
+Final return
+Finished Degree
+Final return
+
+Finished main
+Naive Parallel Seidel took 314 milliseconds to run.
+
+ Naive Parllel Floyd Warshall took 288 milliseconds to run.
+Initial GRAPH:
+FINAL GRAPH:
+
+ Sequential Floyd Warshall took 1433 milliseconds to run.
+Original MAtrix 
+Final MAtrix 
+FInal MAtrix 
+
+ Blocked Parllel Floyd Warshall took 160 milliseconds to run.
+done
+The operation required: 5268 milliseconds
+Parallel operation required: 364 milliseconds
+done
+$ 
+
+765 NODES:
+dpcpp -g -std=c++17 -o Seidel-Parallel Seidel/NaiveParallelSeidel.cpp
+dpcpp -g -std=c++17 -O0 -o Seidel-Sequential Seidel/SequentialSeidel.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Blocked Floyd-Warshall/BlockParallelFloydWarshall.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Naive Floyd-Warshall/NaiveParallelFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o FloydWarshall-Sequential Floyd-Warshall/SequentialFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o Djik_Sequential RepeatedDjikstra/DjikstraBasic.cpp
+dpcpp -g -std=c++17 -o Djik_Parallel RepeatedDjikstra/DjikstraBasicAndParallel.cpp
+
+Final return
+
+Finished main
+Naive Parallel Seidel took 375 milliseconds to run.
+
+ Naive Parllel Floyd Warshall took 337 milliseconds to run.
+Initial GRAPH:
+FINAL GRAPH:
+
+ Sequential Floyd Warshall took 4660 milliseconds to run.
+Original MAtrix 
+Final MAtrix 
+FInal MAtrix 
+
+ Blocked Parllel Floyd Warshall took 256 milliseconds to run.
+done
+The operation required: 17173 milliseconds
+Parallel operation required: 782 milliseconds
+done
+$ 
+
+1015 NODES:
+dpcpp -g -std=c++17 -o Seidel-Parallel Seidel/NaiveParallelSeidel.cpp
+dpcpp -g -std=c++17 -O0 -o Seidel-Sequential Seidel/SequentialSeidel.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Blocked Floyd-Warshall/BlockParallelFloydWarshall.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Naive Floyd-Warshall/NaiveParallelFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o FloydWarshall-Sequential Floyd-Warshall/SequentialFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o Djik_Sequential RepeatedDjikstra/DjikstraBasic.cpp
+dpcpp -g -std=c++17 -o Djik_Parallel RepeatedDjikstra/DjikstraBasicAndParallel.cpp
+
+APD Started
+B matrix
+B MATRIX:
+GOING TO DO B MATRIX CHECK
+Check B matrix DONE
+0
+Recurring NOW
+APD Started
+B matrix
+B MATRIX:
+GOING TO DO B MATRIX CHECK
+Check B matrix DONE
+1
+Finished Recurring
+XMATRIX
+Finished Degree
+Final return
+
+Finished main
+Naive Parallel Seidel took 1276 milliseconds to run.
+
+ Naive Parllel Floyd Warshall took 422 milliseconds to run.
+Initial GRAPH:
+FINAL GRAPH:
+
+ Sequential Floyd Warshall took 10835 milliseconds to run.
+Original MAtrix 
+Final MAtrix 
+FInal MAtrix 
+
+ Blocked Parllel Floyd Warshall took 278 milliseconds to run.
+done
+The operation required: 40080 milliseconds
+Parallel operation required: 1483 milliseconds
+done
+$ 
+
+1265 NODES:
+dpcpp -g -std=c++17 -o Seidel-Parallel Seidel/NaiveParallelSeidel.cpp
+dpcpp -g -std=c++17 -O0 -o Seidel-Sequential Seidel/SequentialSeidel.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Blocked Floyd-Warshall/BlockParallelFloydWarshall.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Naive Floyd-Warshall/NaiveParallelFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o FloydWarshall-Sequential Floyd-Warshall/SequentialFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o Djik_Sequential RepeatedDjikstra/DjikstraBasic.cpp
+dpcpp -g -std=c++17 -o Djik_Parallel RepeatedDjikstra/DjikstraBasicAndParallel.cpp
+
+APD Started
+GOING TO DO B MATRIX CHECK
+APD Started
+GOING TO DO B MATRIX CHECK
+Final return
+
+Finished main
+Naive Parallel Seidel took 2236 milliseconds to run.
+Original MAtrix 
+Final MAtrix 
+FInal MAtrix 
+
+ Blocked Parllel Floyd Warshall took 743 milliseconds to run.
+done
+The operation required: 77493 milliseconds
+Parallel operation required: 2297 milliseconds
+done
+$ 
+
+1515 NODES:
+dpcpp -g -std=c++17 -o Seidel-Parallel Seidel/NaiveParallelSeidel.cpp
+dpcpp -g -std=c++17 -O0 -o Seidel-Sequential Seidel/SequentialSeidel.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Blocked Floyd-Warshall/BlockParallelFloydWarshall.cpp
+dpcpp -g -std=c++17  -o FloydWarshall-Parallel-Naive Floyd-Warshall/NaiveParallelFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o FloydWarshall-Sequential Floyd-Warshall/SequentialFloydWarshall.cpp
+dpcpp -g -std=c++17 -O0 -o Djik_Sequential RepeatedDjikstra/DjikstraBasic.cpp
+dpcpp -g -std=c++17 -o Djik_Parallel RepeatedDjikstra/DjikstraBasicAndParallel.cpp
+
+APD Started
+B matrix
+B MATRIX:
+GOING TO DO B MATRIX CHECK
+Check B matrix DONE
+0
+Recurring NOW
+APD Started
+B matrix
+B MATRIX:
+GOING TO DO B MATRIX CHECK
+Check B matrix DONE
+1
+Finished Recurring
+XMATRIX
+Finished Degree
+Final return
+
+Finished main
+Naive Parallel Seidel took 3703 milliseconds to run.
+Original MAtrix 
+Final MAtrix 
+FInal MAtrix 
+
+ Blocked Parllel Floyd Warshall took 695 milliseconds to run.
+done
+The operation required: 133103 milliseconds
+Parallel operation required: 3341 milliseconds
+done
+END

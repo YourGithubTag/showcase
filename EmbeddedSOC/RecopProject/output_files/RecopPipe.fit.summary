@@ -1,0 +1,20 @@
+Fitter Status : Successful - Mon May  3 21:07:38 2021
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : RecopPipe
+Top-level Entity Name : recop
+Family : Cyclone V
+Device : 5CGXFC7C7F23C8
+Timing Models : Final
+Logic utilization (in ALMs) : 392 / 56,480 ( < 1 % )
+Total registers : 416
+Total pins : 45 / 268 ( 17 % )
+Total virtual pins : 0
+Total block memory bits : 589,824 / 7,024,640 ( 8 % )
+Total RAM Blocks : 72 / 686 ( 10 % )
+Total DSP Blocks : 0 / 156 ( 0 % )
+Total HSSI RX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 6 ( 0 % )
+Total HSSI TX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 6 ( 0 % )
+Total PLLs : 1 / 13 ( 8 % )
+Total DLLs : 0 / 4 ( 0 % )

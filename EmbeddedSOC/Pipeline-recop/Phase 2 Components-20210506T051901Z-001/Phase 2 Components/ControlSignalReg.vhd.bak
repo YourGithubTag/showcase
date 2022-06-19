@@ -1,0 +1,26 @@
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+use work.recop_types.all;
+use work.opcodes.all;
+use work.various_constants.all;
+
+
+port (
+		clk					: in bit_1;
+		-- Input
+		am						: in bit_2; -- Addressing Mode
+		opcode				: in bit_6; -- Opcode
+		-- Mux select signals
+		pc_mux_sel			: out bit_2 := "00";
+		reg_mux_sel			: out bit_2 := "00";
+		alu_mux_a_sel		: out bit_1 := '0';
+		alu_mux_b_sel		: out bit_1 := '0';
+		data_wr_mux_sel	: out bit_1 := '0';
+		wr_add_mux_sel		: out bit_1 := '0';
+		rd_add_mux_sel		: out bit_1 := '0'
+	);

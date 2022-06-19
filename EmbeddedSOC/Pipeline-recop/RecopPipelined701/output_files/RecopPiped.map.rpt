@@ -1,0 +1,300 @@
+Analysis & Synthesis report for RecopPiped
+Thu May 06 20:50:08 2021
+Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2016  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++-----------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Thu May 06 20:50:08 2021               ;
+; Quartus Prime Version       ; 16.1.0 Build 196 10/24/2016 SJ Standard Edition ;
+; Revision Name               ; RecopPiped                                      ;
+; Top-level Entity Name       ; RecopPiped                                      ;
+; Family                      ; Cyclone V                                       ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                       ;
+; Total registers             ; N/A until Partition Merge                       ;
+; Total pins                  ; N/A until Partition Merge                       ;
+; Total virtual pins          ; N/A until Partition Merge                       ;
+; Total block memory bits     ; N/A until Partition Merge                       ;
+; Total PLLs                  ; N/A until Partition Merge                       ;
+; Total DLLs                  ; N/A until Partition Merge                       ;
++-----------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; RecopPiped         ; RecopPiped         ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                               ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 16.1.0 Build 196 10/24/2016 SJ Standard Edition
+    Info: Processing started: Thu May 06 20:49:57 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RecopPiped -c RecopPiped
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/control_unit.vhd
+    Info (12022): Found design unit 1: control_unit-behaviour File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/control_unit.vhd Line: 30
+    Info (12023): Found entity 1: control_unit File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/control_unit.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/regfile.vhd
+    Info (12022): Found design unit 1: regfile-beh File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/regfile.vhd Line: 37
+    Info (12023): Found entity 1: regfile File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/regfile.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/program_counter.vhd
+    Info (12022): Found design unit 1: program_counter-behaviour File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/program_counter.vhd Line: 27
+    Info (12023): Found entity 1: program_counter File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/program_counter.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/alu.vhd
+    Info (12022): Found design unit 1: alu-combined File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/alu.vhd Line: 32
+    Info (12023): Found entity 1: alu File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/alu.vhd Line: 15
+Info (12021): Found 1 design units, including 0 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/opcodes.vhd
+    Info (12022): Found design unit 1: opcodes File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/opcodes.vhd Line: 7
+Info (12021): Found 1 design units, including 0 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/recop_types.vhd
+    Info (12022): Found design unit 1: recop_types File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/recop_types.vhd Line: 5
+Info (12021): Found 1 design units, including 0 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/various_constants.vhd
+    Info (12022): Found design unit 1: various_constants File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/various_constants.vhd Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file recoppiped.bdf
+    Info (12023): Found entity 1: RecopPiped
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/instructionreg.vhd
+    Info (12022): Found design unit 1: InstructionReg-regBehave File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/InstructionReg.vhd Line: 20
+    Info (12023): Found entity 1: InstructionReg File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/InstructionReg.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file prog_mem.vhd
+    Info (12022): Found design unit 1: prog_mem-SYN File: D:/RecopPipelined701/Prog_mem.vhd Line: 55
+    Info (12023): Found entity 1: Prog_mem File: D:/RecopPipelined701/Prog_mem.vhd Line: 43
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/executereg.vhd
+    Info (12022): Found design unit 1: ExecuteReg-regBehave File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/ExecuteReg.vhd Line: 22
+    Info (12023): Found entity 1: ExecuteReg File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/ExecuteReg.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/controlsignalreg.vhd
+    Info (12022): Found design unit 1: ControlSignalReg-regBehave File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/ControlSignalReg.vhd Line: 37
+    Info (12023): Found entity 1: ControlSignalReg File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/ControlSignalReg.vhd Line: 12
+Info (12021): Found 2 design units, including 1 entities, in source file data_mem.vhd
+    Info (12022): Found design unit 1: data_mem-SYN File: D:/RecopPipelined701/Data_mem.vhd Line: 55
+    Info (12023): Found entity 1: Data_mem File: D:/RecopPipelined701/Data_mem.vhd Line: 43
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/data_mem_mux.vhd
+    Info (12022): Found design unit 1: dm_data_mux-beh File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/Data_Mem_Mux.vhd Line: 25
+    Info (12023): Found entity 1: dm_data_mux File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/Data_Mem_Mux.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/data_address_mux.vhd
+    Info (12022): Found design unit 1: dm_address_mux-beh File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/Data_Address_mux.vhd Line: 24
+    Info (12023): Found entity 1: dm_address_mux File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/Data_Address_mux.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file data_meme.vhd
+    Info (12022): Found design unit 1: data_meme-SYN File: D:/RecopPipelined701/Data_Meme.vhd Line: 56
+    Info (12023): Found entity 1: Data_Meme File: D:/RecopPipelined701/Data_Meme.vhd Line: 43
+Info (12021): Found 2 design units, including 1 entities, in source file /phase 2 components-20210506t051901z-001/phase 2 components/data_read_address_mux.vhd
+    Info (12022): Found design unit 1: dm_data_Read_mux-beh File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/Data_Read_Address_Mux.vhd Line: 25
+    Info (12023): Found entity 1: dm_data_Read_mux File: D:/Phase 2 Components-20210506T051901Z-001/Phase 2 Components/Data_Read_Address_Mux.vhd Line: 11
+Info (12127): Elaborating entity "RecopPiped" for the top level hierarchy
+Warning (275085): Found inconsistent dimensions for element "OPERAND_EXE"
+Warning (275085): Found inconsistent dimensions for element "OPERAND_EXE"
+Warning (275085): Found inconsistent dimensions for element "OPERAND_EXE"
+Warning (275085): Found inconsistent dimensions for element "OPERAND_EXE"
+Warning (275085): Found inconsistent dimensions for element "OPERAND_EXE"
+Warning (275085): Found inconsistent dimensions for element "OPERAND_EXE"
+Warning (275080): Converted elements in bus name "OPERAND_EXE" using legacy naming rules. Make any assignments on the new names, not on the original names.
+    Warning (275081): Converted element name(s) from "OPERAND_EXE[2..0]" to "OPERAND_EXE2..0"
+Error (275024): Width mismatch in port "address[15..0]" of instance "inst5" and type Prog_mem -- source is ""prog_address""
+Error (275044): Port "reset" of type InstructionReg of instance "inst6" is missing source signal
+Error (275024): Width mismatch in port "instruction[31..0]" of instance "inst6" and type InstructionReg -- source is ""Instruction""
+Error (275024): Width mismatch in port "Rx_SEL[3..0]" of instance "inst7" and type ExecuteReg -- source is ""Rx_SEL""
+Error (275024): Width mismatch in port "Rz_SEL[3..0]" of instance "inst7" and type ExecuteReg -- source is ""Rz_SEL""
+Error (275024): Width mismatch in port "operand[15..0]" of instance "inst7" and type ExecuteReg -- source is ""Operand""
+Error (275024): Width mismatch in port "pc_mux_sel[1..0]" of instance "inst1" and type ControlSignalReg -- source is ""pc_mux_sel_IN""
+Error (275024): Width mismatch in port "reg_mux_sel[1..0]" of instance "inst1" and type ControlSignalReg -- source is ""reg_mux_sel_IN""
+Error (275024): Width mismatch in port "sel_z[3..0]" of instance "inst3" and type regfile -- source is ""RZ_SEL_EXE""
+Error (275024): Width mismatch in port "sel_x[3..0]" of instance "inst3" and type regfile -- source is ""RX_SEL_EXE""
+Error (275024): Width mismatch in port "rf_input_sel[1..0]" of instance "inst3" and type regfile -- source is ""REG_MUX_SEL""
+Error (275024): Width mismatch in port "ir_operand[15..0]" of instance "inst3" and type regfile -- source is ""OPERAND_EXE""
+Error (275024): Width mismatch in port "dm_out[15..0]" of instance "inst3" and type regfile -- source is ""DATA_MEM_OUT""
+Error (275024): Width mismatch in port "aluout[15..0]" of instance "inst3" and type regfile -- source is ""ALU_OUT""
+Error (275024): Width mismatch in port "Rz[15..0]" of instance "inst9" and type dm_address_mux -- source is ""RZ""
+Error (275024): Width mismatch in port "ir_operand[15..0]" of instance "inst9" and type dm_address_mux -- source is ""OPERAND_EXE""
+Error (275024): Width mismatch in port "Rx[15..0]" of instance "inst10" and type dm_data_mux -- source is ""RX""
+Error (275024): Width mismatch in port "ir_operand[15..0]" of instance "inst10" and type dm_data_mux -- source is ""OPERAND_EXE""
+Error (275024): Width mismatch in port "wraddress[12..0]" of instance "inst11" and type Data_Meme -- source is ""dm_add[15..0]" (ID dm_address_mux:inst9)"
+Error (275024): Width mismatch in port "rdaddress[12..0]" of instance "inst11" and type Data_Meme -- source is ""dm_data[15..0]" (ID dm_data_Read_mux:inst12)"
+Error (275024): Width mismatch in port "Rx[15..0]" of instance "inst12" and type dm_data_Read_mux -- source is ""RX""
+Error (275024): Width mismatch in port "ir_operand[15..0]" of instance "inst12" and type dm_data_Read_mux -- source is ""OPERAND_EXE""
+Error (275024): Width mismatch in port "rz[15..0]" of instance "inst" and type alu -- source is ""RZ""
+Error (275024): Width mismatch in port "rx[15..0]" of instance "inst" and type alu -- source is ""RX""
+Error (275024): Width mismatch in port "operand[15..0]" of instance "inst" and type alu -- source is ""OPERAND_EXE""
+Error (275024): Width mismatch in port "pc_mux[1..0]" of instance "inst2" and type program_counter -- source is ""PC_MUX_SEL""
+Error (275024): Width mismatch in port "am[1..0]" of instance "inst13" and type control_unit -- source is ""AM""
+Error (275024): Width mismatch in port "opcode[5..0]" of instance "inst13" and type control_unit -- source is ""OpCode""
+Error (275023): Width mismatch in RX -- source is ""rx[15..0]" (ID regfile:inst3)"
+Error (275023): Width mismatch in RZ -- source is ""rz[15..0]" (ID regfile:inst3)"
+Error (275023): Width mismatch in OPERAND_EXE -- source is ""operand_OUT[15..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in OPERAND_EXE -- source is ""operand_OUT[15..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in DATA_MEM_OUT -- source is ""q[15..0]" (ID Data_Meme:inst11)"
+Error (275023): Width mismatch in RX -- source is ""rx[15..0]" (ID regfile:inst3)"
+Error (275023): Width mismatch in RZ -- source is ""rz[15..0]" (ID regfile:inst3)"
+Error (275023): Width mismatch in RZ_SEL_EXE -- source is ""Rz_SEL_OUT[3..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in RX_SEL_EXE -- source is ""Rx_SEL_OUT[3..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in REG_MUX_SEL -- source is ""reg_mux_sel_out[1..0]" (ID ControlSignalReg:inst1)"
+Error (275023): Width mismatch in OPERAND_EXE -- source is ""operand_OUT[15..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in DATA_MEM_OUT -- source is ""q[15..0]" (ID Data_Meme:inst11)"
+Error (275023): Width mismatch in ALU_OUT -- source is ""alu_out[15..0]" (ID alu:inst)"
+Error (275023): Width mismatch in ALU_OUT -- source is ""alu_out[15..0]" (ID alu:inst)"
+Error (275023): Width mismatch in RZ -- source is ""rz[15..0]" (ID regfile:inst3)"
+Error (275023): Width mismatch in RX -- source is ""rx[15..0]" (ID regfile:inst3)"
+Error (275023): Width mismatch in OPERAND_EXE -- source is ""operand_OUT[15..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in AM -- source is ""AM[1..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in OpCode -- source is ""Opcode[5..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in Rx_SEL -- source is ""Rx_SEL[3..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in Rz_SEL -- source is ""Rz_SEL[3..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in Operand -- source is ""operand[15..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in Instruction -- source is ""q[31..0]" (ID Prog_mem:inst5)"
+Error (275023): Width mismatch in RX -- source is ""rx[15..0]" (ID regfile:inst3)"
+Error (275023): Width mismatch in OPERAND_EXE -- source is ""operand_OUT[15..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in Rx_SEL -- source is ""Rx_SEL[3..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in Rz_SEL -- source is ""Rz_SEL[3..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in Operand -- source is ""operand[15..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in RX_SEL_EXE -- source is ""Rx_SEL_OUT[3..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in RZ_SEL_EXE -- source is ""Rz_SEL_OUT[3..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in OPERAND_EXE -- source is ""operand_OUT[15..0]" (ID ExecuteReg:inst7)"
+Error (275023): Width mismatch in Instruction -- source is ""q[31..0]" (ID Prog_mem:inst5)"
+Error (275023): Width mismatch in prog_address -- source is ""program_count[15..0]" (ID program_counter:inst2)"
+Error (275023): Width mismatch in prog_address -- source is ""program_count[15..0]" (ID program_counter:inst2)"
+Error (275023): Width mismatch in PC_MUX_SEL -- source is ""pc_mux_sel_out[1..0]" (ID ControlSignalReg:inst1)"
+Error (275023): Width mismatch in PC_MUX_SEL -- source is ""pc_mux_sel_out[1..0]" (ID ControlSignalReg:inst1)"
+Error (275023): Width mismatch in REG_MUX_SEL -- source is ""reg_mux_sel_out[1..0]" (ID ControlSignalReg:inst1)"
+Error (275023): Width mismatch in pc_mux_sel_IN -- source is ""pc_mux_sel[1..0]" (ID control_unit:inst13)"
+Error (275023): Width mismatch in reg_mux_sel_IN -- source is ""reg_mux_sel[1..0]" (ID control_unit:inst13)"
+Error (275023): Width mismatch in AM -- source is ""AM[1..0]" (ID InstructionReg:inst6)"
+Error (275023): Width mismatch in OpCode -- source is ""Opcode[5..0]" (ID InstructionReg:inst6)"
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 70 errors, 9 warnings
+    Error: Peak virtual memory: 771 megabytes
+    Error: Processing ended: Thu May 06 20:50:08 2021
+    Error: Elapsed time: 00:00:11
+    Error: Total CPU time (on all processors): 00:00:17
+
+

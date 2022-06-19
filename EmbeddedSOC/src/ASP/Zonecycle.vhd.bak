@@ -1,0 +1,21 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+entity delay_line is
+port(
+
+  i_clk             : in  std_logic;
+  i_sync_reset      : in  std_logic;
+  i_data            : in  std_logic_vector(15 downto 0);
+  o_data            : out std_logic_vector(15 downto 0));
+  
+end delay_line;
+architecture rtl of delay_line is
+
+SIGNAL LATCH = std_logic_vector(15 downto 0):= ;
+
+begin
+
+
+
+end rtl;

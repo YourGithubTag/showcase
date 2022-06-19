@@ -1,0 +1,8 @@
+
+State Machine - |recop|controlunit:inst11|state
+Name state.T2 state.T1 state.T0 state.E0 state.Ini 
+state.Ini 0 0 0 0 0 
+state.E0 0 0 0 1 1 
+state.T0 0 0 1 0 1 
+state.T1 0 1 0 0 1 
+state.T2 1 0 0 0 1 

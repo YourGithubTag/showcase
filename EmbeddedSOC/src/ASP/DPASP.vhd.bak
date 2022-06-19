@@ -1,0 +1,147 @@
+library ieee;
+use ieee.numeric_std.all;
+use ieee.std_logic_1164.all;
+
+library work;
+use work.TdmaMinTypes.all;
+
+entity DPASP is
+	port (
+		clock : in  std_logic;
+		sw    : in  std_logic_vector(9 downto 0);
+		send  : out tdma_min_port;
+		recv  : in  tdma_min_port
+	);
+end entity;
+
+
+architecture control of DPASP is
+
+COMPONENT ASP IS 
+	PORT
+	(
+		CLK_IN :  IN  STD_LOGIC;
+		ENABLESIMPLE :  IN  STD_LOGIC;
+		ENABLECOMPLEX :  IN  STD_LOGIC;
+		RESETSIMP :  IN  STD_LOGIC;
+		RESETCOMPLEX :  IN  STD_LOGIC;
+		VALID :  IN  STD_LOGIC;
+		DATA_IN :  IN  STD_LOGIC_VECTOR(15 DOWNTO 0);
+		GAINCOMPLEX :  IN  STD_LOGIC_VECTOR(15 DOWNTO 0);
+		GAINSIMPLE :  IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+		OUTPUTSEL :  IN  STD_LOGIC_VECTOR(1 DOWNTO 0);
+		Output :  OUT  STD_LOGIC_VECTOR(15 DOWNTO 0)
+	);
+	
+END COMPONENT;
+
+SIGNAL	enable_bitcrush :  STD_LOGIC;
+SIGNAL	enable_echocomplex :  STD_LOGIC;
+SIGNAL	enable_echosimple :  STD_LOGIC;
+SIGNAL	enable_FM :  STD_LOGIC;
+
+SIGNAL	Gain_comp :  STD_LOGIC_VECTOR(15 DOWNTO 0);
+SIGNAL	Gain_simp :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+SIGNAL	output_sel :  STD_LOGIC_VECTOR(1 DOWNTO 0);
+
+SIGNAL	reset_complexecho :  STD_LOGIC;
+SIGNAL	reset_echosimp :  STD_LOGIC;
+SIGNAL	reset_FM :  STD_LOGIC;
+
+SIGNAL RecievedIn : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL data_in:  STD_LOGIC_VECTOR(15 DOWNTO 0);
+SIGNAL aspOUT : STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+SIGNAL DATAOUTPUT : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL VALID : STD_LOGIC;
+
+begin
+
+
+
+datapath: ASP
+PORT MAP (
+		CLK_IN  => clock,
+		ENABLESIMPLE => enable_echosimple,
+		ENABLECOMPLEX => enable_echocomplex,
+		RESETSIMP => reset_echosimp,
+		RESETCOMPLEX => reset_complexecho,
+		VALID => VALID,
+		DATA_IN  => data_in,
+		GAINCOMPLEX => Gain_comp,
+		GAINSIMPLE => Gain_simp,
+		OUTPUTSEL => output_sel,
+	   Output => aspOUT
+);
+
+
+process(clock)
+VARIABLE switchState: std_logic_vector(1 downto 0);
+begin
+
+if (rising_edge(clock)) then
+
+	switchState := sw(1 downto 0);
+	
+	Gain_comp <= x"0002";
+	Gain_simp <= x"02";
+	
+	case switchState is
+	
+		when "00" =>
+			enable_echocomplex <= '1';
+			enable_echosimple <= '1';
+			reset_echosimp <=  '0';
+			reset_complexecho <= '1';
+			output_sel <= "00";
+		when "01" =>
+			enable_echocomplex <= '1';
+			enable_echosimple <= '1';
+			reset_echosimp <=  '1';
+			reset_complexecho <= '0';
+			output_sel <= "01";
+		when "10" =>
+			enable_echocomplex <= '0';
+			enable_echosimple <= '0';
+			reset_echosimp <= '1';
+			reset_complexecho <= '1';
+			output_sel <= "10";
+		when "11" =>
+			enable_echocomplex <= '0';
+			enable_echosimple <= '0';
+			reset_echosimp <= '1';
+			reset_complexecho <= '1';
+			output_sel <= "11";
+		when others =>
+			enable_echocomplex <= '0';
+			enable_echosimple <= '0';
+			reset_echosimp <= '1';
+			reset_complexecho <= '1';
+			output_sel <= "00";
+		end case;
+			
+end if;
+end process;
+
+
+
+process(clock)
+begin
+if (rising_edge(clock)) then
+		if recv.data(31 downto 28) = "1000" and recv.data(16) = '0' then
+			RecievedIn <= recv.data;
+			data_in <= RecievedIn(15 downto 0);
+			send.data <= RecievedIn(31 downto 16) & aspOUT;
+			send.addr <= x"01";
+			VALID <= '1';
+		else 
+			VALID <= '0';
+		end if;
+end if;
+end process;
+
+end architecture control;
+
+
+

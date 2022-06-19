@@ -1,0 +1,17 @@
+const int AEI = 800;
+const int AVI = 150;
+const int VRP = 150;
+const int PVARP = 100;
+const int URI = 400;
+const int LRI = 950;
+
+const int Vminwait = 1;
+const int Vmaxwait = 1200;
+
+const int Aminwait = 1;
+const int Amaxwait = 1200;
+
+
+bool VRPActive = false;
+bool URIActive = false;
+bool PVARPActive = false;

@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+const int AEI = 800;
+const int AVI = 150;
+const int VRP = 150;
+const int PVARP = 100;
+const int URI = 400;
+const int LRI = AVI + AEI;
+
+const int Vminwait = 1;
+const int Vmaxwait = 1200;
+
+const int Aminwait = 1;
+const int Amaxwait = 1200;
+
+
+bool URIActive = false;</declaration>
+	<template>
+		<name x="5" y="5">RA</name>
+		<parameter>broadcast chan &amp;AP, broadcast chan &amp;APulse</parameter>
+		<declaration>// Place local declarations here.
+
+clock Atrium;</declaration>
+		<location id="id0" x="-382" y="-59">
+			<name x="-392" y="-93">RA</name>
+			<label kind="invariant" x="-365" y="-68">Atrium &lt; Amaxwait</label>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-442" y="68">Atrium &gt; Aminwait</label>
+			<label kind="synchronisation" x="-442" y="51">APulse!</label>
+			<label kind="assignment" x="-442" y="85">Atrium = 0</label>
+			<nail x="-467" y="34"/>
+			<nail x="-289" y="34"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-416" y="-187">AP?</label>
+			<label kind="assignment" x="-425" y="-170">Atrium = 0</label>
+			<nail x="-459" y="-144"/>
+			<nail x="-280" y="-144"/>
+		</transition>
+	</template>
+	<template>
+		<name>RV</name>
+		<parameter>broadcast chan &amp;VP, broadcast chan &amp;VPulse</parameter>
+		<declaration>
+clock Ventricle;</declaration>
+		<location id="id1" x="-433" y="-51">
+			<name x="-443" y="-85">RV</name>
+			<label kind="invariant" x="-365" y="-59">Ventricle &lt; Vmaxwait</label>
+		</location>
+		<init ref="id1"/>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-467" y="68">Ventricle &gt; Vminwait</label>
+			<label kind="synchronisation" x="-467" y="51">VPulse!</label>
+			<label kind="assignment" x="-467" y="85">Ventricle = 0</label>
+			<nail x="-484" y="17"/>
+			<nail x="-348" y="17"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-467" y="-178">VP?</label>
+			<label kind="assignment" x="-467" y="-153">Ventricle = 0</label>
+			<nail x="-442" y="-59"/>
+			<nail x="-484" y="-119"/>
+			<nail x="-374" y="-119"/>
+		</transition>
+	</template>
+	<template>
+		<name>PM_AVI</name>
+		<parameter>broadcast chan &amp;VP, broadcast chan &amp;VPulse, broadcast chan &amp;APulse, broadcast chan &amp;AP, urgent chan &amp;AVI_Start, broadcast chan &amp;AVI_Ex, urgent chan &amp;AVI_Stop, broadcast chan &amp;PVARP_Ex, broadcast chan &amp;AS, broadcast chan &amp;VS, broadcast chan &amp;URI_Ex </parameter>
+		<location id="id2" x="-612" y="-238">
+			<name x="-622" y="-272">Initial</name>
+		</location>
+		<location id="id3" x="-612" y="-161">
+			<name x="-595" y="-178">Idle</name>
+		</location>
+		<location id="id4" x="-297" y="0">
+			<name x="-331" y="17">AVIStart</name>
+			<committed/>
+		</location>
+		<location id="id5" x="-170" y="0">
+			<name x="-238" y="0">AVIWait</name>
+		</location>
+		<location id="id6" x="-51" y="127">
+			<name x="-119" y="102">URIWait</name>
+		</location>
+		<location id="id7" x="-400" y="195">
+			<name x="-434" y="153">AVI_Pace</name>
+			<committed/>
+		</location>
+		<location id="id8" x="-391" y="85">
+			<committed/>
+		</location>
+		<init ref="id2"/>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id7"/>
+			<label kind="guard" x="-152" y="-94">URIActive == false</label>
+			<label kind="synchronisation" x="-152" y="-77">AVI_Ex?</label>
+			<nail x="-170" y="-60"/>
+			<nail x="8" y="-60"/>
+			<nail x="8" y="246"/>
+			<nail x="-400" y="246"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-416" y="-85">AP?</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-569" y="-17">AS?</label>
+			<nail x="-612" y="0"/>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-595" y="68">AVI_Stop!</label>
+			<nail x="-646" y="85"/>
+			<nail x="-646" y="-68"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-671" y="127">VP!</label>
+			<nail x="-689" y="195"/>
+			<nail x="-689" y="-161"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-162" y="170">URI_Ex?</label>
+			<nail x="-51" y="195"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-221" y="110">VS?</label>
+			<nail x="-128" y="127"/>
+			<nail x="-391" y="127"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-280" y="68">VS?</label>
+			<nail x="-170" y="85"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-145" y="-34">URIActive == true</label>
+			<label kind="synchronisation" x="-102" y="-17">AVI_Ex?</label>
+			<nail x="-51" y="0"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-263" y="-77">AVI_Start!</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-450" y="-263">AS?</label>
+			<nail x="-297" y="-238"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-612" y="-204">VS?</label>
+		</transition>
+	</template>
+	<template>
+		<name>PM_AEI</name>
+		<parameter>broadcast chan &amp;VPulse, broadcast chan &amp;VP,broadcast chan &amp;AP ,broadcast chan &amp;APulse , urgent chan &amp;AEI_Start , broadcast chan &amp;AEI_Ex, urgent chan &amp;AEI_Stop,broadcast chan &amp;PVARP_Ex, broadcast chan &amp;AS, broadcast chan &amp;VS</parameter>
+		<location id="id9" x="-476" y="43">
+			<name x="-527" y="25">IDLE</name>
+		</location>
+		<location id="id10" x="-263" y="43">
+			<name x="-280" y="59">AEIStart</name>
+			<committed/>
+		</location>
+		<location id="id11" x="-263" y="-76">
+			<name x="-348" y="-85">AtrialWait</name>
+		</location>
+		<location id="id12" x="-263" y="-170">
+			<name x="-297" y="-204">AtrialSensed</name>
+			<committed/>
+		</location>
+		<location id="id13" x="-119" y="-76">
+			<name x="-93" y="-85">AEI_Pace</name>
+			<committed/>
+		</location>
+		<init ref="id9"/>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-221" y="-68">AEI_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-255" y="-127">AS?</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-458" y="-187">AEI_Stop!</label>
+			<nail x="-476" y="-170"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-510" y="102">AP!</label>
+			<nail x="-119" y="136"/>
+			<nail x="-476" y="135"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="-331" y="-17">AEI_Start!</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-391" y="85">VS?</label>
+			<nail x="-382" y="110"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-408" y="25">VP?</label>
+		</transition>
+	</template>
+	<template>
+		<name>PM_LRI</name>
+		<parameter>broadcast chan &amp;VPulse, broadcast chan &amp;VP,urgent chan &amp;LRI_Start, broadcast chan &amp;LRI_Ex, urgent chan &amp;LRI_Stop, broadcast chan &amp;VRP_Ex, broadcast chan &amp;VS</parameter>
+		<location id="id14" x="-893" y="-161">
+			<name x="-944" y="-187">Initial</name>
+		</location>
+		<location id="id15" x="-544" y="-161">
+			<name x="-554" y="-195">LRIStart</name>
+			<committed/>
+		</location>
+		<location id="id16" x="-544" y="110">
+			<name x="-654" y="101">LRIEXPIRY</name>
+			<committed/>
+		</location>
+		<location id="id17" x="-273" y="110">
+			<name x="-280" y="127">WaitVentricle</name>
+		</location>
+		<location id="id18" x="-425" y="-42">
+			<committed/>
+		</location>
+		<init ref="id14"/>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id15"/>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id17"/>
+			<label kind="synchronisation" x="-366" y="-187">LRI_Start!</label>
+			<nail x="-273" y="-161"/>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="-425" y="85">LRI_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-468" y="-110">LRI_Stop!</label>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="-324" y="-34">VP?</label>
+			<nail x="-324" y="8"/>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="-425" y="34">VS?</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-799" y="-187">VS?</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-859" y="-212">VP?</label>
+			<nail x="-731" y="-238"/>
+		</transition>
+	</template>
+	<template>
+		<name>PM_URI</name>
+		<parameter>broadcast chan &amp;VPulse, broadcast chan &amp;VP,urgent chan &amp;URI_Start, broadcast chan &amp;URI_Ex, urgent chan &amp;URI_Stop, broadcast chan &amp;VS, broadcast chan &amp;AS, broadcast chan &amp;AP</parameter>
+		<location id="id19" x="-773" y="-289">
+			<name x="-807" y="-315">IDLE</name>
+		</location>
+		<location id="id20" x="-595" y="-289">
+			<name x="-620" y="-263">URIStart</name>
+			<committed/>
+		</location>
+		<location id="id21" x="-382" y="-289">
+			<name x="-416" y="-323">AtrialWait</name>
+		</location>
+		<location id="id22" x="-162" y="-289">
+			<name x="-145" y="-298">VentricleWait</name>
+		</location>
+		<location id="id23" x="-493" y="-383">
+			<committed/>
+		</location>
+		<init ref="id19"/>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id22"/>
+			<label kind="synchronisation" x="-280" y="-238">AP?</label>
+			<nail x="-263" y="-238"/>
+		</transition>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id20"/>
+			<label kind="synchronisation" x="-603" y="-399">URI_Stop!</label>
+			<label kind="assignment" x="-654" y="-382">URIActive = false</label>
+		</transition>
+		<transition>
+			<source ref="id22"/>
+			<target ref="id23"/>
+			<label kind="synchronisation" x="-297" y="-349">VP?</label>
+		</transition>
+		<transition>
+			<source ref="id22"/>
+			<target ref="id23"/>
+			<label kind="synchronisation" x="-153" y="-383">VS?</label>
+			<nail x="-162" y="-383"/>
+		</transition>
+		<transition>
+			<source ref="id22"/>
+			<target ref="id19"/>
+			<label kind="synchronisation" x="-807" y="-128">URI_Ex?</label>
+			<label kind="assignment" x="-806" y="-145">URIActive = false</label>
+			<nail x="-162" y="-145"/>
+			<nail x="-824" y="-145"/>
+			<nail x="-824" y="-289"/>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id22"/>
+			<label kind="synchronisation" x="-289" y="-306">AS?</label>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id19"/>
+			<label kind="synchronisation" x="-365" y="-230">URI_Ex?</label>
+			<label kind="assignment" x="-365" y="-204">URIActive = false</label>
+			<nail x="-382" y="-272"/>
+			<nail x="-382" y="-196"/>
+			<nail x="-773" y="-196"/>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id21"/>
+			<label kind="synchronisation" x="-552" y="-306">URI_Start!</label>
+			<label kind="assignment" x="-569" y="-289">URIActive = true</label>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id20"/>
+			<label kind="synchronisation" x="-697" y="-306">VS?</label>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id20"/>
+			<label kind="synchronisation" x="-714" y="-340">VP?</label>
+			<nail x="-680" y="-323"/>
+		</transition>
+	</template>
+	<template>
+		<name>PM_VRP</name>
+		<parameter>broadcast chan &amp;VPulse, broadcast chan &amp;VP, urgent chan &amp;VRP_Start, broadcast chan &amp;VRP_Ex, broadcast chan &amp;VS, broadcast chan &amp;AS,broadcast chan &amp;AP</parameter>
+		<location id="id24" x="-1758" y="-416">
+			<name x="-1810" y="-425">IDLE</name>
+		</location>
+		<location id="id25" x="-1461" y="-518">
+			<name x="-1471" y="-552">VRPStart</name>
+			<committed/>
+		</location>
+		<location id="id26" x="-1317" y="-518">
+			<name x="-1334" y="-552">WAITVRP</name>
+		</location>
+		<location id="id27" x="-1606" y="-467">
+			<name x="-1589" y="-450">VSensed</name>
+			<committed/>
+		</location>
+		<location id="id28" x="-1317" y="-339">
+			<name x="-1343" y="-314">AtrialEvent</name>
+		</location>
+		<init ref="id24"/>
+		<transition>
+			<source ref="id28"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="-1682" y="-382">AP?</label>
+		</transition>
+		<transition>
+			<source ref="id28"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="-1750" y="-331">AS?</label>
+			<nail x="-1759" y="-339"/>
+		</transition>
+		<transition>
+			<source ref="id26"/>
+			<target ref="id28"/>
+			<label kind="synchronisation" x="-1308" y="-441">VRP_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id27"/>
+			<target ref="id25"/>
+			<label kind="synchronisation" x="-1530" y="-484">VS!</label>
+		</transition>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id27"/>
+			<label kind="synchronisation" x="-1674" y="-442">VPulse?</label>
+		</transition>
+		<transition>
+			<source ref="id25"/>
+			<target ref="id26"/>
+			<label kind="synchronisation" x="-1427" y="-535">VRP_Start!</label>
+			<nail x="-1359" y="-518"/>
+		</transition>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id25"/>
+			<label kind="synchronisation" x="-1734" y="-544">VP?</label>
+			<nail x="-1759" y="-518"/>
+		</transition>
+	</template>
+	<template>
+		<name>PM_PVARP</name>
+		<parameter>broadcast chan &amp;VPulse, broadcast chan &amp;APulse, broadcast chan &amp;AP,broadcast chan &amp;VP, urgent chan &amp;PVARP_Start, broadcast chan &amp;PVARP_Ex, broadcast chan &amp;AS, broadcast chan &amp;VS</parameter>
+		<location id="id29" x="-909" y="-467">
+			<name x="-926" y="-509">WAITPVARP</name>
+		</location>
+		<location id="id30" x="-1249" y="-365">
+			<name x="-1283" y="-408">IDLE</name>
+		</location>
+		<location id="id31" x="-722" y="-467">
+			<name x="-697" y="-476">Block</name>
+			<committed/>
+		</location>
+		<location id="id32" x="-1054" y="-467">
+			<committed/>
+		</location>
+		<location id="id33" x="-1420" y="-365">
+			<name x="-1462" y="-399">ASensed</name>
+			<committed/>
+		</location>
+		<location id="id34" x="-909" y="-289">
+			<name x="-884" y="-298">AtrialWait</name>
+		</location>
+		<init ref="id30"/>
+		<transition>
+			<source ref="id34"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-1385" y="-246">APulse?</label>
+			<nail x="-909" y="-229"/>
+			<nail x="-1419" y="-229"/>
+		</transition>
+		<transition>
+			<source ref="id34"/>
+			<target ref="id30"/>
+			<label kind="synchronisation" x="-1231" y="-306">AP?</label>
+			<nail x="-1249" y="-289"/>
+		</transition>
+		<transition>
+			<source ref="id29"/>
+			<target ref="id34"/>
+			<label kind="synchronisation" x="-901" y="-391">PVARP_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id33"/>
+			<target ref="id30"/>
+			<label kind="synchronisation" x="-1352" y="-382">AS!</label>
+		</transition>
+		<transition>
+			<source ref="id30"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-1368" y="-305">APulse?</label>
+			<nail x="-1344" y="-306"/>
+		</transition>
+		<transition>
+			<source ref="id31"/>
+			<target ref="id29"/>
+			<nail x="-807" y="-425"/>
+		</transition>
+		<transition>
+			<source ref="id29"/>
+			<target ref="id31"/>
+			<label kind="synchronisation" x="-841" y="-484">APulse?</label>
+		</transition>
+		<transition>
+			<source ref="id32"/>
+			<target ref="id29"/>
+			<label kind="synchronisation" x="-1028" y="-493">PVARP_Start!</label>
+			<nail x="-977" y="-467"/>
+		</transition>
+		<transition>
+			<source ref="id30"/>
+			<target ref="id32"/>
+			<label kind="synchronisation" x="-1215" y="-391">VS?</label>
+			<nail x="-1139" y="-365"/>
+		</transition>
+		<transition>
+			<source ref="id30"/>
+			<target ref="id32"/>
+			<label kind="synchronisation" x="-1190" y="-493">VP?</label>
+			<nail x="-1181" y="-467"/>
+		</transition>
+	</template>
+	<template>
+		<name>AVI_Timer</name>
+		<parameter>urgent chan &amp;AVI_Start, broadcast chan &amp;AVI_Ex, urgent chan &amp;AVI_Stop</parameter>
+		<declaration>
+clock AVITimer;</declaration>
+		<location id="id35" x="-629" y="-263">
+			<name x="-639" y="-297">IDLE</name>
+		</location>
+		<location id="id36" x="-629" y="-85">
+			<name x="-637" y="-68">AVIWait</name>
+			<label kind="invariant" x="-637" y="-42">AVITimer &lt;= AVI</label>
+		</location>
+		<init ref="id35"/>
+		<transition>
+			<source ref="id36"/>
+			<target ref="id35"/>
+			<label kind="synchronisation" x="-620" y="-178">AVI_Stop?</label>
+		</transition>
+		<transition>
+			<source ref="id36"/>
+			<target ref="id35"/>
+			<label kind="guard" x="-833" y="-212">AVITimer &gt;= AVI</label>
+			<label kind="synchronisation" x="-824" y="-195">AVI_Ex!</label>
+			<nail x="-714" y="-178"/>
+		</transition>
+		<transition>
+			<source ref="id35"/>
+			<target ref="id36"/>
+			<label kind="synchronisation" x="-527" y="-195">AVI_Start?</label>
+			<label kind="assignment" x="-527" y="-178">AVITimer = 0</label>
+			<nail x="-535" y="-178"/>
+		</transition>
+	</template>
+	<template>
+		<name>AEI_Timer</name>
+		<parameter>urgent chan &amp;AEI_Start , broadcast chan &amp;AEI_Ex, urgent chan &amp;AEI_Stop</parameter>
+		<declaration>
+clock AEITimer;</declaration>
+		<location id="id37" x="-773" y="-76">
+			<name x="-790" y="-59">AEIWait</name>
+			<label kind="invariant" x="-790" y="-42">AEITimer &lt;= AEI</label>
+		</location>
+		<location id="id38" x="-773" y="-238">
+			<name x="-783" y="-272">IDLE</name>
+		</location>
+		<init ref="id38"/>
+		<transition>
+			<source ref="id37"/>
+			<target ref="id38"/>
+			<label kind="synchronisation" x="-765" y="-170">AEI_Stop?</label>
+		</transition>
+		<transition>
+			<source ref="id37"/>
+			<target ref="id38"/>
+			<label kind="guard" x="-977" y="-187">AEITimer &gt;= AEI</label>
+			<label kind="synchronisation" x="-935" y="-170">AEI_Ex!</label>
+			<nail x="-850" y="-170"/>
+		</transition>
+		<transition>
+			<source ref="id38"/>
+			<target ref="id37"/>
+			<label kind="synchronisation" x="-688" y="-187">AEI_Start?</label>
+			<label kind="assignment" x="-688" y="-161">AEITimer = 0</label>
+			<nail x="-688" y="-161"/>
+		</transition>
+	</template>
+	<template>
+		<name>LRI_Timer</name>
+		<parameter>urgent chan &amp;LRI_Start, broadcast chan &amp;LRI_Ex, urgent chan &amp;LRI_Stop</parameter>
+		<declaration>
+clock LRITimer; </declaration>
+		<location id="id39" x="-510" y="-68">
+			<name x="-527" y="-51">LRIWAIT</name>
+			<label kind="invariant" x="-527" y="-34">LRITimer &lt;= LRI</label>
+		</location>
+		<location id="id40" x="-510" y="-238">
+			<name x="-520" y="-272">IDLE</name>
+		</location>
+		<init ref="id40"/>
+		<transition>
+			<source ref="id39"/>
+			<target ref="id40"/>
+			<label kind="synchronisation" x="-501" y="-161">LRI_Stop?</label>
+		</transition>
+		<transition>
+			<source ref="id39"/>
+			<target ref="id40"/>
+			<label kind="guard" x="-714" y="-204">LRITimer &gt;= LRI</label>
+			<label kind="synchronisation" x="-697" y="-178">LRI_Ex!</label>
+			<nail x="-595" y="-170"/>
+		</transition>
+		<transition>
+			<source ref="id40"/>
+			<target ref="id39"/>
+			<label kind="synchronisation" x="-408" y="-170">LRI_Start?</label>
+			<label kind="assignment" x="-408" y="-153">LRITimer = 0</label>
+			<nail x="-416" y="-153"/>
+		</transition>
+	</template>
+	<template>
+		<name>URI_Timer</name>
+		<parameter>urgent chan &amp;URI_Start, broadcast chan &amp;URI_Ex , urgent chan &amp;URI_Stop</parameter>
+		<declaration>
+
+clock URITimer;</declaration>
+		<location id="id41" x="-340" y="-8">
+			<name x="-348" y="17">URIWait</name>
+			<label kind="invariant" x="-348" y="34">URITimer &lt;= URI</label>
+		</location>
+		<location id="id42" x="-340" y="-178">
+			<name x="-350" y="-212">IDLE</name>
+		</location>
+		<init ref="id42"/>
+		<transition>
+			<source ref="id41"/>
+			<target ref="id42"/>
+			<label kind="synchronisation" x="-331" y="-102">URI_Stop?</label>
+		</transition>
+		<transition>
+			<source ref="id41"/>
+			<target ref="id42"/>
+			<label kind="guard" x="-544" y="-110">URITimer &gt;=URI</label>
+			<label kind="synchronisation" x="-484" y="-93">URI_Ex!</label>
+			<nail x="-416" y="-93"/>
+		</transition>
+		<transition>
+			<source ref="id42"/>
+			<target ref="id41"/>
+			<label kind="synchronisation" x="-246" y="-110">URI_Start?</label>
+			<label kind="assignment" x="-246" y="-93">URITimer = 0</label>
+			<nail x="-255" y="-93"/>
+		</transition>
+	</template>
+	<template>
+		<name>VRP_Timer</name>
+		<parameter>urgent chan &amp;VRP_Start, broadcast chan &amp;VRP_Ex</parameter>
+		<declaration>
+
+clock VRPTimer;</declaration>
+		<location id="id43" x="-518" y="-85">
+			<name x="-527" y="-68">VRPWait</name>
+			<label kind="invariant" x="-527" y="-51">VRPTimer &lt;= VRP</label>
+		</location>
+		<location id="id44" x="-527" y="-246">
+			<name x="-537" y="-280">IDLE</name>
+		</location>
+		<init ref="id44"/>
+		<transition>
+			<source ref="id43"/>
+			<target ref="id44"/>
+			<label kind="guard" x="-714" y="-187">VRPTimer &gt;= VRP</label>
+			<label kind="synchronisation" x="-646" y="-170">VRP_Ex!</label>
+			<nail x="-569" y="-170"/>
+		</transition>
+		<transition>
+			<source ref="id44"/>
+			<target ref="id43"/>
+			<label kind="synchronisation" x="-467" y="-187">VRP_Start?</label>
+			<label kind="assignment" x="-467" y="-170">VRPTimer = 0</label>
+			<nail x="-476" y="-170"/>
+		</transition>
+	</template>
+	<template>
+		<name>PVARP_Timer</name>
+		<parameter>urgent chan &amp;PVARP_Start, broadcast chan &amp;PVARP_Ex</parameter>
+		<declaration>
+
+clock PVARPTimer;</declaration>
+		<location id="id45" x="-552" y="-119">
+			<name x="-526" y="-128">PVARPWait</name>
+			<label kind="invariant" x="-562" y="-102">PVARPTimer &lt;= PVARP</label>
+		</location>
+		<location id="id46" x="-561" y="-280">
+			<name x="-571" y="-314">IDLE</name>
+		</location>
+		<init ref="id46"/>
+		<transition>
+			<source ref="id45"/>
+			<target ref="id46"/>
+			<label kind="guard" x="-790" y="-221">PVARPTimer &gt;= PVARP</label>
+			<label kind="synchronisation" x="-739" y="-187">PVARP_Ex!</label>
+			<nail x="-620" y="-204"/>
+		</transition>
+		<transition>
+			<source ref="id46"/>
+			<target ref="id45"/>
+			<label kind="synchronisation" x="-476" y="-212">PVARP_Start?</label>
+			<label kind="assignment" x="-476" y="-195">PVARPTimer = 0</label>
+			<nail x="-493" y="-204"/>
+		</transition>
+	</template>
+	<template>
+		<name>Monitor_AS</name>
+		<parameter>broadcast chan &amp;PVARP_Start, broadcast chan &amp;PVARP_Ex, broadcast chan &amp;AS</parameter>
+		<location id="id47" x="-501" y="-59">
+			<name x="-511" y="-93">IDLE</name>
+		</location>
+		<location id="id48" x="-323" y="-59">
+			<name x="-297" y="-68">PVARPactive</name>
+		</location>
+		<location id="id49" x="-323" y="42">
+			<name x="-357" y="67">ASinPVARP</name>
+		</location>
+		<init ref="id47"/>
+		<transition>
+			<source ref="id48"/>
+			<target ref="id49"/>
+			<label kind="synchronisation" x="-314" y="-8">AS?</label>
+		</transition>
+		<transition>
+			<source ref="id48"/>
+			<target ref="id47"/>
+			<label kind="synchronisation" x="-442" y="-8">PVARP_Ex?</label>
+			<nail x="-408" y="-17"/>
+		</transition>
+		<transition>
+			<source ref="id47"/>
+			<target ref="id48"/>
+			<label kind="synchronisation" x="-459" y="-136">PVARP_Start?</label>
+			<nail x="-399" y="-102"/>
+		</transition>
+	</template>
+	<template>
+		<name>Monitor_VS</name>
+		<parameter>broadcast chan &amp;VRP_Start, broadcast chan &amp;VRP_Ex, broadcast chan &amp;VS</parameter>
+		<location id="id50" x="-323" y="-59">
+			<name x="-297" y="-68">VRPactive</name>
+		</location>
+		<location id="id51" x="-323" y="42">
+			<name x="-357" y="67">VSinVRP</name>
+		</location>
+		<location id="id52" x="-501" y="-59">
+			<name x="-511" y="-93">IDLE</name>
+		</location>
+		<init ref="id52"/>
+		<transition>
+			<source ref="id50"/>
+			<target ref="id51"/>
+			<label kind="synchronisation" x="-314" y="-8">VS?</label>
+		</transition>
+		<transition>
+			<source ref="id50"/>
+			<target ref="id52"/>
+			<label kind="synchronisation" x="-459" y="-8">VRP_Ex?</label>
+			<nail x="-408" y="-17"/>
+		</transition>
+		<transition>
+			<source ref="id52"/>
+			<target ref="id50"/>
+			<label kind="synchronisation" x="-459" y="-136">VRP_Start?</label>
+			<nail x="-399" y="-102"/>
+		</transition>
+	</template>
+	<template>
+		<name>Monitor_LRI</name>
+		<parameter>broadcast chan &amp;VS, broadcast chan &amp;VP</parameter>
+		<declaration>
+clock timer;</declaration>
+		<location id="id53" x="-1878" y="-195">
+			<name x="-1888" y="-229">IDL</name>
+		</location>
+		<location id="id54" x="-1691" y="-195">
+			<name x="-1701" y="-229">Wait1</name>
+		</location>
+		<location id="id55" x="-1521" y="-195">
+			<name x="-1496" y="-204">Detect</name>
+			<committed/>
+		</location>
+		<init ref="id53"/>
+		<transition>
+			<source ref="id55"/>
+			<target ref="id54"/>
+			<label kind="assignment" x="-1673" y="-85">timer = 0</label>
+			<nail x="-1521" y="-85"/>
+			<nail x="-1691" y="-85"/>
+		</transition>
+		<transition>
+			<source ref="id53"/>
+			<target ref="id54"/>
+			<label kind="synchronisation" x="-1802" y="-144">VS?</label>
+			<label kind="assignment" x="-1810" y="-119">timer = 0</label>
+			<nail x="-1785" y="-153"/>
+		</transition>
+		<transition>
+			<source ref="id54"/>
+			<target ref="id55"/>
+			<label kind="synchronisation" x="-1623" y="-153">VS?</label>
+			<nail x="-1598" y="-153"/>
+		</transition>
+		<transition>
+			<source ref="id54"/>
+			<target ref="id55"/>
+			<label kind="synchronisation" x="-1615" y="-272">VP?</label>
+			<nail x="-1598" y="-246"/>
+		</transition>
+		<transition>
+			<source ref="id53"/>
+			<target ref="id54"/>
+			<label kind="synchronisation" x="-1810" y="-263">VP?</label>
+			<label kind="assignment" x="-1810" y="-280">timer = 0</label>
+			<nail x="-1793" y="-246"/>
+		</transition>
+	</template>
+	<template>
+		<name>Monitor_AVI_Interval</name>
+		<parameter>broadcast chan &amp;AP, broadcast chan &amp;AS,  broadcast chan &amp;VS, broadcast chan &amp;VP,broadcast chan &amp;AVI_Ex</parameter>
+		<declaration>
+clock timer;</declaration>
+		<location id="id56" x="-663" y="-93">
+			<name x="-705" y="-127">IDLE</name>
+		</location>
+		<location id="id57" x="-484" y="-93">
+			<name x="-493" y="-136">TimerStart</name>
+		</location>
+		<location id="id58" x="-178" y="-93">
+			<name x="-229" y="-76">VPaceAfterAVI</name>
+			<committed/>
+		</location>
+		<location id="id59" x="-306" y="-93">
+			<name x="-331" y="-136">AVI_Expiry</name>
+		</location>
+		<init ref="id56"/>
+		<transition>
+			<source ref="id59"/>
+			<target ref="id56"/>
+			<label kind="synchronisation" x="-704" y="34">VS?</label>
+			<nail x="-306" y="51"/>
+			<nail x="-722" y="51"/>
+			<nail x="-722" y="-93"/>
+		</transition>
+		<transition>
+			<source ref="id59"/>
+			<target ref="id58"/>
+			<label kind="synchronisation" x="-288" y="-110">VP?</label>
+		</transition>
+		<transition>
+			<source ref="id57"/>
+			<target ref="id59"/>
+			<label kind="synchronisation" x="-433" y="-110">AVI_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id58"/>
+			<target ref="id56"/>
+			<nail x="-178" y="-195"/>
+			<nail x="-663" y="-195"/>
+		</transition>
+		<transition>
+			<source ref="id57"/>
+			<target ref="id56"/>
+			<label kind="synchronisation" x="-518" y="25">VS?</label>
+			<nail x="-484" y="25"/>
+			<nail x="-663" y="25"/>
+		</transition>
+		<transition>
+			<source ref="id56"/>
+			<target ref="id57"/>
+			<label kind="synchronisation" x="-612" y="-42">AS?</label>
+			<label kind="assignment" x="-612" y="-25">timer = 0</label>
+			<nail x="-578" y="-42"/>
+		</transition>
+		<transition>
+			<source ref="id56"/>
+			<target ref="id57"/>
+			<label kind="synchronisation" x="-586" y="-136">AP?</label>
+			<label kind="assignment" x="-603" y="-119">timer = 0</label>
+			<nail x="-578" y="-161"/>
+		</transition>
+	</template>
+	<template>
+		<name>Monitor_AVI</name>
+		<parameter>broadcast chan &amp;VP, broadcast chan &amp;AVI_Start, broadcast chan &amp;AVI_Ex, broadcast chan &amp;AVI_Stop</parameter>
+		<location id="id60" x="-1742" y="-271">
+			<name x="-1827" y="-288">ValidVP</name>
+			<committed/>
+		</location>
+		<location id="id61" x="-1657" y="-195">
+		</location>
+		<location id="id62" x="-1496" y="-195">
+			<name x="-1462" y="-212">AVI_Period</name>
+		</location>
+		<location id="id63" x="-1496" y="-76">
+			<name x="-1521" y="-51">InvalidVP</name>
+		</location>
+		<init ref="id61"/>
+		<transition>
+			<source ref="id60"/>
+			<target ref="id61"/>
+			<nail x="-1742" y="-195"/>
+		</transition>
+		<transition>
+			<source ref="id61"/>
+			<target ref="id60"/>
+			<label kind="synchronisation" x="-1691" y="-288">VP?</label>
+			<nail x="-1657" y="-271"/>
+		</transition>
+		<transition>
+			<source ref="id62"/>
+			<target ref="id61"/>
+			<label kind="synchronisation" x="-1615" y="-212">AVI_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id62"/>
+			<target ref="id63"/>
+			<label kind="synchronisation" x="-1479" y="-144">VP?</label>
+		</transition>
+		<transition>
+			<source ref="id62"/>
+			<target ref="id61"/>
+			<label kind="synchronisation" x="-1615" y="-144">AVI_Stop?</label>
+			<nail x="-1513" y="-186"/>
+			<nail x="-1581" y="-152"/>
+		</transition>
+		<transition>
+			<source ref="id61"/>
+			<target ref="id62"/>
+			<label kind="synchronisation" x="-1615" y="-263">AVI_Start?</label>
+			<nail x="-1581" y="-237"/>
+		</transition>
+	</template>
+	<template>
+		<name>Monitor_AEI</name>
+		<parameter>broadcast chan &amp;AEI_Start , broadcast chan &amp;AEI_Ex, broadcast chan &amp;AEI_Stop,broadcast chan &amp;AP</parameter>
+		<location id="id64" x="-943" y="-102">
+		</location>
+		<location id="id65" x="-782" y="-102">
+			<name x="-748" y="-119">AEI_Period</name>
+		</location>
+		<location id="id66" x="-782" y="17">
+			<name x="-807" y="42">InvalidAP</name>
+		</location>
+		<location id="id67" x="-1028" y="-178">
+			<name x="-1113" y="-195">ValidAP</name>
+			<committed/>
+		</location>
+		<init ref="id64"/>
+		<transition>
+			<source ref="id67"/>
+			<target ref="id64"/>
+			<nail x="-1028" y="-102"/>
+		</transition>
+		<transition>
+			<source ref="id64"/>
+			<target ref="id67"/>
+			<label kind="synchronisation" x="-977" y="-195">AP?</label>
+			<nail x="-943" y="-178"/>
+		</transition>
+		<transition>
+			<source ref="id65"/>
+			<target ref="id64"/>
+			<label kind="synchronisation" x="-901" y="-119">AEI_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id65"/>
+			<target ref="id66"/>
+			<label kind="synchronisation" x="-765" y="-51">AP?</label>
+		</transition>
+		<transition>
+			<source ref="id65"/>
+			<target ref="id64"/>
+			<label kind="synchronisation" x="-901" y="-51">AEI_Stop?</label>
+			<nail x="-799" y="-93"/>
+			<nail x="-867" y="-59"/>
+		</transition>
+		<transition>
+			<source ref="id64"/>
+			<target ref="id65"/>
+			<label kind="synchronisation" x="-901" y="-170">AEI_Start?</label>
+			<nail x="-867" y="-144"/>
+		</transition>
+	</template>
+	<template>
+		<name>Monitor_URI</name>
+		<parameter>broadcast chan &amp;VP, broadcast chan &amp;URI_Start, broadcast chan &amp;URI_Ex, broadcast chan &amp;URI_Stop</parameter>
+		<location id="id68" x="-1717" y="-187">
+			<name x="-1751" y="-178">Idle</name>
+		</location>
+		<location id="id69" x="-1589" y="-187">
+			<name x="-1599" y="-221">URIPeriod</name>
+		</location>
+		<location id="id70" x="-1589" y="-60">
+			<name x="-1615" y="-43">InvalidVP</name>
+		</location>
+		<location id="id71" x="-1853" y="-263">
+			<name x="-1904" y="-289">Valid</name>
+			<committed/>
+		</location>
+		<init ref="id68"/>
+		<transition>
+			<source ref="id71"/>
+			<target ref="id68"/>
+			<nail x="-1853" y="-187"/>
+		</transition>
+		<transition>
+			<source ref="id68"/>
+			<target ref="id71"/>
+			<label kind="synchronisation" x="-1793" y="-280">VP?</label>
+			<nail x="-1717" y="-263"/>
+		</transition>
+		<transition>
+			<source ref="id69"/>
+			<target ref="id70"/>
+			<label kind="synchronisation" x="-1581" y="-136">VP?</label>
+		</transition>
+		<transition>
+			<source ref="id69"/>
+			<target ref="id68"/>
+			<label kind="synchronisation" x="-1683" y="-128">URI_Stop?</label>
+			<nail x="-1657" y="-136"/>
+		</transition>
+		<transition>
+			<source ref="id69"/>
+			<target ref="id68"/>
+			<label kind="synchronisation" x="-1683" y="-204">URI_Ex?</label>
+		</transition>
+		<transition>
+			<source ref="id68"/>
+			<target ref="id69"/>
+			<label kind="synchronisation" x="-1691" y="-255">URI_Start?</label>
+			<nail x="-1657" y="-229"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+//Process = Template();
+// List one or more processes to be composed into a system.
+//system Process;
+    
+broadcast chan LRI_Start, LRI_Ex, LRI_Stop;
+broadcast chan URI_Start, URI_Ex, URI_Stop;
+
+broadcast chan AEI_Start, AEI_Ex, AEI_Stop;
+broadcast chan AVI_Start, AVI_Ex, AVI_Stop;
+
+broadcast chan VRP_Start, VRP_Ex, VRP_Stop;
+broadcast chan PVARP_Start, PVARP_Ex, PVARP_Stop;
+
+broadcast chan VP, VPulse;
+broadcast chan AP, APulse;
+
+broadcast chan AS, VS;
+
+Random_Atrium_M = RA(AP, APulse);
+Random_Ventricle_M = RV(VP, VPulse);
+
+PM_AVI_M = PM_AVI(VP, VPulse, APulse, AP, AVI_Start, AVI_Ex, AVI_Stop, PVARP_Ex, AS, VS, URI_Ex);
+PM_AVI_Timer_M = AVI_Timer(AVI_Start, AVI_Ex, AVI_Stop);
+
+PM_AEI_M =  PM_AEI(VPulse, VP, AP, APulse,AEI_Start , AEI_Ex, AEI_Stop, PVARP_Ex, AS, VS);
+PM_AEI_Timer_M = AEI_Timer(AEI_Start, AEI_Ex, AEI_Stop);
+
+PM_LRI_M = PM_LRI(VPulse, VP,LRI_Start, LRI_Ex, LRI_Stop, VRP_Ex, VS);
+PM_LRI_Timer_M = LRI_Timer(LRI_Start, LRI_Ex, LRI_Stop);
+
+PM_URI_M = PM_URI(VPulse, VP ,URI_Start, URI_Ex,URI_Stop, VS,AS,AP);
+PM_URI_Timer_M = URI_Timer(URI_Start, URI_Ex, URI_Stop);
+
+PM_VRP_M =  PM_VRP(VPulse, VP, VRP_Start,VRP_Ex, VS,AS, AP);
+PM_VRP_Timer_M = VRP_Timer(VRP_Start, VRP_Ex);
+
+PM_PVARP_M = PM_PVARP(VPulse,APulse,AP,VP, PVARP_Start, PVARP_Ex, AS, VS);
+PM_PVARP_Timer_M = PVARP_Timer(PVARP_Start, PVARP_Ex);
+
+MonitorAS = Monitor_AS(PVARP_Start, PVARP_Ex,AS);
+MonitorVS = Monitor_VS(VRP_Start, VRP_Ex,VS);
+MonitorLRI = Monitor_LRI(VS,VP);
+MonitorAVIInterval = Monitor_AVI_Interval(AP,AS, VS,VP,AVI_Ex);
+MonitorAEI = Monitor_AEI(AEI_Start,AEI_Ex,AEI_Stop,AP);
+MonitorURI = Monitor_URI(VP, URI_Start, URI_Ex, URI_Stop);
+MonitorAVI = Monitor_AVI(VP, AVI_Start, AVI_Ex, AVI_Stop);
+
+system Random_Atrium_M, Random_Ventricle_M, PM_AVI_M, PM_AVI_Timer_M, PM_AEI_M, PM_AEI_Timer_M, PM_LRI_M, PM_LRI_Timer_M, PM_URI_M, 
+    PM_URI_Timer_M, PM_VRP_M, PM_VRP_Timer_M, PM_PVARP_M, PM_PVARP_Timer_M, MonitorAS,MonitorVS,MonitorLRI, MonitorAVIInterval, MonitorAEI,MonitorURI, MonitorAVI;</system>
+	<queries>
+		<query>
+			<formula>A[] (not deadlock)</formula>
+			<comment>1. The system is deadlock free.
+No Deadlock</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; not (MonitorVS.VSinVRP)</formula>
+			<comment>2. A ventricular sense (VS) cannot be generated within VRP.
+There does not eventually exist a path where a Ventricule Sense happens during VRP</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; not (MonitorAS.ASinPVARP)</formula>
+			<comment>3. An atrial sense (AS) cannot be generated within PVARP.
+There does not eventually exist a path where a Atrial Sense happens during PVARP</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; not (MonitorAEI.InvalidAP)</formula>
+			<comment>4. The pacemaker never delivers a pacing pulse (AP) within AEI.
+There does not eventually exist a path where there is a Atrial Pace during the AEI period</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; not (MonitorAVI.InvalidVP)</formula>
+			<comment>5. The pacemaker never delivers a pacing pulse (VP) within AVI.
+There does not exist a path eventually where there is a Ventricle Pace during the URI period</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; not (MonitorURI.InvalidVP)</formula>
+			<comment>6. The pacemaker never delivers a pacing pulse (VP) within URI.
+THere does not eventually exist a path where there is a Ventricle Pace during the URI period</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; not (MonitorLRI.Detect imply MonitorLRI.timer &gt; LRI)</formula>
+			<comment>7. The time interval between two consecutive ventricular events is always less or equal to LRI.
+
+There does not eventually exists a path where when two consecutive ventricle events occur, the time is more than LRI</comment>
+		</query>
+		<query>
+			<formula>A[](MonitorLRI.Detect imply MonitorLRI.timer &lt;= LRI)</formula>
+			<comment>7. The time interval between two consecutive ventricular events is always less or equal to LRI.
+
+For all paths always, the interval between two ventricular events is less than or equal to LRI</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; (MonitorAVIInterval.VPaceAfterAVI imply MonitorAVIInterval.timer &gt; AVI &amp;&amp; MonitorAVIInterval.timer == URI)</formula>
+			<comment>8. The pacemaker can deliver a pacing pulse (VP), where the time interval between this VP and its
+preceding atrial event is greater than AVI.
+
+There eventually exists a path Where the MonitorAVIInterval detects a Ventricular Pace and the time from the previous atrial event is more than AVI</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt;(MonitorAVI.ValidVP)</formula>
+			<comment>Eventually a valid ventricle pace is done</comment>
+		</query>
+		<query>
+			<formula>A[] (PM_AVI_M.AVI_Pace imply URIActive == false)</formula>
+			<comment>For all paths globally, an AVI Ventricle pace means that URI is inactive</comment>
+		</query>
+		<query>
+			<formula>E[] (PM_AVI_M.AVI_Pace imply PM_URI_Timer_M.URITimer &gt;= URI)</formula>
+			<comment>There exists for all paths always where when AVI paces the Ventricle </comment>
+		</query>
+		<query>
+			<formula>A[] (PM_AVI_M.AVI_Pace imply PM_AVI_Timer_M.AVITimer &gt;= AVI)</formula>
+			<comment>For all paths always, A ventricle pace implies that the AVItimer is more than or equal to AVI</comment>
+		</query>
+		<query>
+			<formula>A&lt;&gt; (PM_AEI_M.AEI_Pace imply PM_AEI_Timer_M.AEITimer == AEI)</formula>
+			<comment>in all paths eventually AEI paces the Atrium, it implies that the AEI timer has expired</comment>
+		</query>
+		<query>
+			<formula>A[](PM_LRI_M.LRIEXPIRY imply PM_AVI_Timer_M.AVITimer == AVI)</formula>
+			<comment>For all paths, always, whenever LRI expires, implies AVI is expiring</comment>
+		</query>
+		<query>
+			<formula>A[] (PM_AVI_M.AVI_Pace imply PM_URI_M.IDLE)</formula>
+			<comment>Always, in all paths, A pacing action by AVI is while URI is inactive</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; (PM_AVI_M.AVI_Pace)</formula>
+			<comment>Making Sure AVI will Pace the Ventricle</comment>
+		</query>
+	</queries>
+</nta>

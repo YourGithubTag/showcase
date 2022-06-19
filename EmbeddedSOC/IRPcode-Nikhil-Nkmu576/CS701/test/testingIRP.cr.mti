@@ -1,0 +1,141 @@
+/home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinInterface.vhd {0 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinInterface.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+** Error: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinInterface.vhd(5): (vcom-1598) Library "ip" not found.
+-- Loading package TdmaMinTypes
+** Note: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinInterface.vhd(10): VHDL Compiler exiting
+
+} {7.0 8.0} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/AllPassEchoBlock.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/AllPassEchoBlock.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity AllPassEchoBlock
+-- Compiling architecture bdf_type of AllPassEchoBlock
+
+} {} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSwitch.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSwitch.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package TdmaMinTypes
+-- Compiling entity TdmaMinSwitch
+-- Compiling architecture rtl of TdmaMinSwitch
+
+} {} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/addition.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/ASP/addition.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity addition
+-- Compiling architecture arch of addition
+
+} {} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestAdc.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestAdc.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package TdmaMinTypes
+-- Compiling entity TestAdc
+-- Compiling architecture sim of TestAdc
+
+} {} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinTypes.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinTypes.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package TdmaMinTypes
+-- Compiling package body TdmaMinTypes
+-- Loading package TdmaMinTypes
+
+} {} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSlots.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinSlots.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity TdmaMinSlots
+-- Compiling architecture rtl of TdmaMinSlots
+
+} {} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd {0 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package TdmaMinTypes
+-- Compiling entity TdmaMinFabric
+-- Compiling architecture rtl of TdmaMinFabric
+** Error: (vcom-11) Could not find work.tdmaminstage.
+** Error (suppressible): /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd(34): (vcom-1195) Cannot find expanded name "work.TdmaMinStage".
+** Error: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd(34): Unknown expanded name.
+** Note: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinFabric.vhd(45): VHDL Compiler exiting
+
+} {10.0 11.0 12.0 13.0} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd {0 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package TdmaMinTypes
+-- Compiling entity TestTopLevel
+-- Compiling architecture sim of TestTopLevel
+** Error: (vcom-11) Could not find work.tdmamin.
+** Error (suppressible): /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd(25): (vcom-1195) Cannot find expanded name "work.TdmaMin".
+** Error: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd(25): Unknown expanded name.
+-- Loading entity TestAdc
+-- Loading entity TestDac
+** Note: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestTopLevel.vhd(52): VHDL Compiler exiting
+
+} {10.0 11.0 12.0 13.0} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd {0 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package TdmaMinTypes
+-- Compiling entity TdmaMin
+-- Compiling architecture rtl of TdmaMin
+** Error: (vcom-11) Could not find work.tdmaminslots.
+** Error (suppressible): /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd(29): (vcom-1195) Cannot find expanded name "work.TdmaMinSlots".
+** Error: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd(29): Unknown expanded name.
+** Error: (vcom-11) Could not find work.tdmaminfabric.
+** Error (suppressible): /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd(38): (vcom-1195) Cannot find expanded name "work.TdmaMinFabric".
+** Error: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd(38): Unknown expanded name.
+** Error: (vcom-11) Could not find work.tdmamininterface.
+** Error (suppressible): /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd(50): (vcom-1195) Cannot find expanded name "work.TdmaMinInterface".
+** Error: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd(50): Unknown expanded name.
+** Note: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMin.vhd(66): VHDL Compiler exiting
+
+} {10.0 11.0 12.0 14.0 15.0 17.0 18.0 19.0} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd {0 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package TdmaMinTypes
+-- Compiling entity TdmaMinStage
+-- Compiling architecture rtl of TdmaMinStage
+** Error: (vcom-11) Could not find work.tdmaminswitch.
+** Error (suppressible): /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd(23): (vcom-1195) Cannot find expanded name "work.TdmaMinSwitch".
+** Error: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd(23): Unknown expanded name.
+** Note: /home/nikhil/Documents/701IRP/CleanTDMA/CS701/src/TdmaMin/TdmaMinStage.vhd(33): VHDL Compiler exiting
+
+} {10.0 11.0 12.0 13.0} {}} /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestDac.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/nikhil/Documents/701IRP/CleanTDMA/CS701/test/TestDac.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package TdmaMinTypes
+-- Compiling entity TestDac
+-- Compiling architecture sim of TestDac
+
+} {} {}}
